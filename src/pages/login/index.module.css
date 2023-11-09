@@ -1,0 +1,9 @@
+.container {
+  width: 900px;
+}
+
+.box {
+  background-color: aqua;
+  min-width: 500px;
+  min-height: 500px;
+}
