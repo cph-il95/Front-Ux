@@ -15,13 +15,7 @@ export default function Home() {
       <main>
         <header>
           <h1>Cph Business Booking</h1>
-          <Link href="/login">
-            <Button variant="light" color="orange">
-              Login
-            </Button>
-          </Link>
         </header>
-        <VeryImportant />
       </main>
     </>
   );
