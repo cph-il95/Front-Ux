@@ -1,12 +1,12 @@
 import React from 'react'
-import Timefrom from '@/components/molecules/Timefrom'
+import TimeFrom from '@/components/molecules/TimeFrom'
 import ButtonBack from '@/components/atoms/ButtonBack'
 import ButtonNext from '@/components/atoms/Buttonnext'
 
 export default function newbookings() {
   return (
     <div className='mybookings'>
-    <Timefrom/>
+    <TimeFrom/>
     <ButtonBack/>
     <ButtonNext/>
     </div>
