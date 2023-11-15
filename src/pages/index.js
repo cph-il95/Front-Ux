@@ -1,7 +1,4 @@
 import Head from "next/head";
-import { Button } from "@mantine/core";
-import Link from "next/link";
-import VeryImportant from "@/components/molecules/VeryImportant";
 
 export default function Home() {
   return (
