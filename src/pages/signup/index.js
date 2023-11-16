@@ -59,7 +59,7 @@ export default function Signup() {
             </div>
           </Stack>
           <form onSubmit={handleSubmit}>
-            <Stack h={600} justify="space-between">
+            <Stack h={620} justify="space-between">
               <TextInput
                 size="xl"
                 radius="xs"
@@ -111,8 +111,12 @@ export default function Signup() {
             </Stack>
           </form>
         </div>
-
-        <ButtonBack />
+        <Grid.Col span={2}></Grid.Col>
+        <Stack justify="flex-end">
+          <Grid.Col span={1}>
+            <ButtonBack />
+          </Grid.Col>
+        </Stack>
       </Grid>
     </div>
   );
