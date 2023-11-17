@@ -1,5 +1,5 @@
 import React from 'react';
-import DayPickerComponent from '@/components/organisms/datePicker'
+import DayPickerComponent from '@/components/organisms/DatePicker'
 
 
 const App = () => {
