@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { DatePicker } from '@mantine/dates';
-import { Grid } from '@mantine/core';
 import 'react-day-picker/lib/style.css';
 import DateTimePicker from 'react-datetime-picker';
 import 'react-datetime-picker/dist/DateTimePicker.css';
@@ -8,43 +7,69 @@ import 'react-datetime-picker/dist/DateTimePicker.css';
 
 
 
-// jeg laver komponentet DatPicker 
-const MyDatePicker = () => {
-
-// status for at spore den valgte dato og klokkeslæt
-  const [selectedDateTime, setSelectedDateTime] = useState(new Date());
-
-// Funktionen til at håndtere dato og tidsændring
-  const handleDateTimeChange = (date) => {
-    setSelectedDateTime(date);
-  };
+// jeg laver komponentet DateRangPicker
+const DateRangePicker = () => {
 
 
+// state til at spore start og slut tid
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState( new Date ());
 
-  
-  return (
+// state til at spore den valgte dato
 
+const [selectedDate, setSelectedDate] = useState(new Date ());
+
+// funktion til at klare at datoen bliver ændret
+
+const handleDateChange = (date) => {
+setSelectedDate(date);
+};
+
+// funktion til at klare ændring af start tiden
+const handleStartTimeChange = (time) => {
+setStartDate(time);
+};
+
+// funktion til at klare ændringer i sluttiden 
+
+const handleEndTimeChange =(time) => {
+setEndDate(time);
+};
+
+return (
     <div>
-    <h2>Select a date and time</h2>
-    <div>
-    <DatePicker
-      value={selectedDateTime}
-      onChange={handleDateTimeChange}
-      />
-     </div>
-
-     {selectedDateTime && (
+      <h2>Select a Date, Start Time, and End Time</h2>
+      <div>
+        <label>Date:</label>
+        <DatePicker selected={selectedDate} onDayClick={handleDateChange} />
+      </div>
+      <div>
+        <label>Start Time:</label>
+        <DateTimePicker
+          value={startDate}
+          onChange={handleStartTimeChange}
+          calendarIcon={null} // Hide the calendar icon for the start time
+        />
+      </div>
+      <div>
+        <label>End Time:</label>
+        <DateTimePicker
+          value={endDate}
+          onChange={handleEndTimeChange}
+          calendarIcon={null} // Hide the calendar icon for the end time
+        />
+      </div>
+      {selectedDate && (
         <p>
-          You selected {selectedDateTime.toLocaleDateString()} at{' '}
-          {selectedDateTime.toLocaleTimeString()}
+          You selected {selectedDate.toLocaleDateString()} from{' '}
+          {startDate.toLocaleTimeString()} to {endDate.toLocaleTimeString()}
         </p>
       )}
-      </div>
+    </div>
   );
 };
 
-export default MyDatePicker;
-
+export default DateRangePicker;
 
 
 

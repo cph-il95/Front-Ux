@@ -7,8 +7,14 @@ const HomePage = () => {
 
     <div>
       <h1>PICK A DAY AND TIME</h1>
-      <MyDatePicker/>
+      <DateRangePicker/>
     </div>
+
+
+
+
+
+
   );
 };
 
