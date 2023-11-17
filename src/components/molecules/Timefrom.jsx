@@ -1,25 +1,25 @@
-import { useRef } from 'react';
-import { ActionIcon, rem } from '@mantine/core';
-import { TimeInput } from '@mantine/dates';
+import { Input } from '@mantine/core';
+import { IconChevronDown } from '@tabler/icons-react';
+import React from 'react'
 
-export default function Timestamp() {
-  const ref = useRef(null);
-
-  const pickerControl = (
-    <ActionIcon variant="subtle" color="gray" onClick={() => ref.current?.showPicker()}>
-    </ActionIcon>
-  );
-
+export default function Timefrom() {
   return (
-    <TimeInput label="From" 
-    withAsterisk 
-    ref={ref} 
-    rightSection={pickerControl}
-    step={180}
-    minTime={{hours: 9, minutes: 0}}
-    maxTime={{hours: 12, minutes: 0}}
-    />
-  );
+    <>
+    <label htmlFor="">From</label>
+    
+    <Input
+      component="select" withAsterisk
+      rightSection={<IconChevronDown size={14} stroke={1.5} />}
+      pointer
+      mt="md"
+    >
+      <option value="1" disabled>-</option>
+      <option value="2">9</option>
+      <option value="3">10</option>
+    </Input>
+  </>
+  )
 }
+
 
 
