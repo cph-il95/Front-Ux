@@ -1,20 +1,12 @@
-
-import MyDatePicker from '@/components/organisms/datePicker';
-import { Grid } from '@mantine/core';
+import React from 'react';
+import DateRangePicker from '@/components/organisms/datePicker'; // Adjust the path as necessary
 
 const HomePage = () => {
   return (
-
     <div>
       <h1>PICK A DAY AND TIME</h1>
-      <DateRangePicker/>
+      <DateRangePicker />
     </div>
-
-
-
-
-
-
   );
 };
 

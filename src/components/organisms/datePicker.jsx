@@ -1,129 +1,77 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DatePicker } from '@mantine/dates';
-import 'react-day-picker/lib/style.css';
-import DateTimePicker from 'react-datetime-picker';
-import 'react-datetime-picker/dist/DateTimePicker.css';
 
-
-
-
-// jeg laver komponentet DateRangPicker
 const DateRangePicker = () => {
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(null);
 
+  useEffect(() => {
+    const now = new Date();
+    setStartDate(now);
+    setEndDate(now);
+    setSelectedDate(now);
+  }, []);
 
-// state til at spore start og slut tid
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState( new Date ());
+  const generateTimes = () => {
+    const times = [];
+    for (let i = 0; i < 24; i++) {
+      times.push(`${i.toString().padStart(2, '0')}:00`);
+    }
+    return times;
+  };
 
-// state til at spore den valgte dato
+  const handleStartTimeChange = (event) => {
+    const newTime = new Date(startDate);
+    const [hours,] = event.target.value.split(':');
+    newTime.setHours(hours, 0, 0); // Set minutes and seconds to 0
+    setStartDate(newTime);
+  };
 
-const [selectedDate, setSelectedDate] = useState(new Date ());
+  const handleEndTimeChange = (event) => {
+    const newTime = new Date(endDate);
+    const [hours,] = event.target.value.split(':');
+    newTime.setHours(hours, 0, 0); // Set minutes and seconds to 0
+    setEndDate(newTime);
+  };
 
-// funktion til at klare at datoen bliver ændret
+  if (!startDate || !endDate || !selectedDate) {
+    return null; // or some loading placeholder
+  }
 
-const handleDateChange = (date) => {
-setSelectedDate(date);
-};
-
-// funktion til at klare ændring af start tiden
-const handleStartTimeChange = (time) => {
-setStartDate(time);
-};
-
-// funktion til at klare ændringer i sluttiden 
-
-const handleEndTimeChange =(time) => {
-setEndDate(time);
-};
-
-return (
+  return (
     <div>
       <h2>Select a Date, Start Time, and End Time</h2>
       <div>
         <label>Date:</label>
-        <DatePicker selected={selectedDate} onDayClick={handleDateChange} />
+        <DatePicker
+          value={selectedDate}
+          onChange={setSelectedDate}
+        />
       </div>
       <div>
         <label>Start Time:</label>
-        <DateTimePicker
-          value={startDate}
-          onChange={handleStartTimeChange}
-          calendarIcon={null} // Hide the calendar icon for the start time
-        />
+        <select value={startDate.getHours() + ':00'} onChange={handleStartTimeChange}>
+          {generateTimes().map(time => (
+            <option key={time} value={time}>{time}</option>
+          ))}
+        </select>
       </div>
       <div>
         <label>End Time:</label>
-        <DateTimePicker
-          value={endDate}
-          onChange={handleEndTimeChange}
-          calendarIcon={null} // Hide the calendar icon for the end time
-        />
+        <select value={endDate.getHours() + ':00'} onChange={handleEndTimeChange}>
+          {generateTimes().map(time => (
+            <option key={time} value={time}>{time}</option>
+          ))}
+        </select>
       </div>
-      {selectedDate && (
-        <p>
-          You selected {selectedDate.toLocaleDateString()} from{' '}
-          {startDate.toLocaleTimeString()} to {endDate.toLocaleTimeString()}
-        </p>
-      )}
+      <p>
+        You selected {selectedDate.toLocaleDateString()} from{' '}
+        {startDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false })} to{' '}
+        {endDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false })}
+      </p>
     </div>
   );
 };
 
 export default DateRangePicker;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React, { useState } from 'react';
-// import { DatePicker } from '@mantine/dates';
-// import { Grid } from '@mantine/core';
-
-
-
-// const MyDatePicker = () => {
-//   const [selectedDate, setSelectedDate] = useState(null);
-
-//   const handleDateChange = (date) => {
-//     setSelectedDate(date);
-//   };
-
-
-
-  
-//   return (
-//     <DatePicker
-//       value={selectedDate}
-//       onChange={handleDateChange}
-//       label="Select a date"
-//       placeholder="Choose date"
-//       withSelect
-//     />
-//   );
-// };
-
-// export default MyDatePicker;
