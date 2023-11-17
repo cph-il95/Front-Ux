@@ -3,7 +3,7 @@ import MyDatePicker from '@/components/organisms/datePicker';
 const HomePage = () => {
   return (
     <div>
-      <h1>DatePicker</h1>
+      <h1>PICK A DAY AND TIME</h1>
       <MyDatePicker />
     </div>
   );
