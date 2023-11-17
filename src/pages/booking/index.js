@@ -1,14 +1,12 @@
-import React from 'react';
-import DayPickerComponent from '@/components/organisms/DatePicker'
+import MyDatePicker from '@/components/organisms/datePicker';
 
+const HomePage = () => {
+  return (
+    <div>
+      <h1>DatePicker</h1>
+      <MyDatePicker />
+    </div>
+  );
+};
 
-const App = () => {
-    return (
-      <div>
-        <h1>My React App</h1>
-        <DayPickerComponent />
-      </div>
-    );
-  };
-  
-  export default App;
+export default HomePage;
