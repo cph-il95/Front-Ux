@@ -1,5 +1,6 @@
-import { Button, PasswordInput, TextInput } from "@mantine/core";
+import { Button, Grid, PasswordInput, Stack, TextInput } from "@mantine/core";
 import { createClient } from "@supabase/supabase-js";
+import Link from "next/link";
 import React, { useState } from "react";
 
 export default function index() {
@@ -34,40 +35,55 @@ export default function index() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <TextInput
-          size="xl"
-          radius="xs"
-          label="E-mail"
-          placeholder="E-mail"
-          type="email"
-          value={email}
-          onChange={handleEmailChange}
-          required
-        />
-        <PasswordInput
-          size="xl"
-          radius="xs"
-          label="Password"
-          placeholder="Password"
-          type="password"
-          value={password}
-          onChange={handlePasswordChange}
-          required
-        />
-        <Button
-          variant="filled"
-          color="rgba(38, 18, 18, 1)"
-          size="xl"
-          radius="xs"
-          type="submit"
-        >
-          LOG IN
-        </Button>
-        {/* <link href="./signup">
-          <p>Don't have a user? Sign up here</p>
-        </link> */}
-      </form>
+      <Grid>
+        <Grid.Col span={2}></Grid.Col>
+        <div>
+          <Stack h={50}>
+            <div></div>
+          </Stack>
+          <Stack h={80}>
+            <div>
+              <h2>Welcome</h2>
+              <h2>Please log in</h2>
+            </div>
+          </Stack>
+
+          <form onSubmit={handleSubmit}>
+            <Stack h={400} justify="space-between">
+              <TextInput
+                size="xl"
+                radius="xs"
+                label="E-mail"
+                placeholder="E-mail"
+                type="email"
+                value={email}
+                onChange={handleEmailChange}
+                required
+              />
+              <PasswordInput
+                size="xl"
+                radius="xs"
+                label="Password"
+                placeholder="Password"
+                type="password"
+                value={password}
+                onChange={handlePasswordChange}
+                required
+              />
+              <Button
+                variant="filled"
+                color="rgba(38, 18, 18, 1)"
+                size="xl"
+                radius="xs"
+                type="submit"
+              >
+                LOG IN
+              </Button>
+              <Link href="/signup">Don't have a user? Sign up here</Link>
+            </Stack>
+          </form>
+        </div>
+      </Grid>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, PasswordInput, TextInput, Grid, Stack } from "@mantine/core";
 import { createClient } from "@supabase/supabase-js";
 import ButtonBack from "@/components/atoms/ButtonBack";
+import styles from "../../components/backgroundImage.module.css";
 
 export default function Signup() {
   // state på de forskellige inputs
@@ -45,7 +46,7 @@ export default function Signup() {
   }
 
   return (
-    <div>
+    <div className="styles.background">
       <Grid>
         <Grid.Col span={2}></Grid.Col>
         <div>
@@ -59,7 +60,7 @@ export default function Signup() {
             </div>
           </Stack>
           <form onSubmit={handleSubmit}>
-            <Stack h={620} justify="space-between">
+            <Stack h={610} justify="space-between">
               <TextInput
                 size="xl"
                 radius="xs"
@@ -111,7 +112,7 @@ export default function Signup() {
             </Stack>
           </form>
         </div>
-        <Grid.Col span={2}></Grid.Col>
+        <Grid.Col span={4}></Grid.Col>
         <Stack justify="flex-end">
           <Grid.Col span={1}>
             <ButtonBack />
