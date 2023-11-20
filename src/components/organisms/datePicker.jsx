@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { DatePicker } from '@mantine/dates';
 import { Button, Grid, PasswordInput, Stack, TextInput } from "@mantine/core";
 
+
 const DateRangePicker = () => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
@@ -40,6 +41,8 @@ const DateRangePicker = () => {
     return null; // or some loading placeholder
   }
 
+ 
+
   return (
     <div>
 
@@ -72,7 +75,19 @@ const DateRangePicker = () => {
         You selected {selectedDate.toLocaleDateString()} from{' '}
         {startDate.toLocaleTimeString()} to {endDate.toLocaleTimeString()}
       </p>
+
+      <Button onClick={handleButtonClick} variant="filled" color="rgba(0, 0, 0, 1)">
+      
+      </Button>
+
+
     </div>
+
+
+    
+
+
+
   );
 };
 
