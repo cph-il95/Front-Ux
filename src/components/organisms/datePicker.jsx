@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { DatePicker } from '@mantine/dates';
+import { Button, Grid, PasswordInput, Stack, TextInput } from "@mantine/core";
 
 const DateRangePicker = () => {
   const [startDate, setStartDate] = useState(null);
@@ -27,7 +28,7 @@ const DateRangePicker = () => {
     newTime.setHours(hours, 0, 0); // Set minutes and seconds to 0
     setStartDate(newTime);
   };
-
+  
   const handleEndTimeChange = (event) => {
     const newTime = new Date(endDate);
     const [hours,] = event.target.value.split(':');
@@ -41,12 +42,14 @@ const DateRangePicker = () => {
 
   return (
     <div>
+
       <h2>Select a Date, Start Time, and End Time</h2>
       <div>
         <label>Date:</label>
         <DatePicker
           value={selectedDate}
           onChange={setSelectedDate}
+    
         />
       </div>
       <div>
@@ -67,8 +70,7 @@ const DateRangePicker = () => {
       </div>
       <p>
         You selected {selectedDate.toLocaleDateString()} from{' '}
-        {startDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false })} to{' '}
-        {endDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false })}
+        {startDate.toLocaleTimeString()} to {endDate.toLocaleTimeString()}
       </p>
     </div>
   );
