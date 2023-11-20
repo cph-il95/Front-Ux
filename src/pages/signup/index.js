@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Button, PasswordInput, TextInput, Grid, Stack } from "@mantine/core";
+import {
+  Button,
+  PasswordInput,
+  TextInput,
+  Grid,
+  Stack,
+  Center,
+} from "@mantine/core";
 import { createClient } from "@supabase/supabase-js";
 import ButtonBack from "@/components/atoms/ButtonBack";
 import styles from "../../components/backgroundImage.module.css";
@@ -46,79 +53,78 @@ export default function Signup() {
   }
 
   return (
-    <div className="styles.background">
-      <Grid>
-        <Grid.Col span={2}></Grid.Col>
-        <div>
-          <Stack h={50}>
-            <div></div>
-          </Stack>
-          <Stack h={80}>
-            <div>
-              <h2>Hello</h2>
-              <h2>Please sign up to continue</h2>
-            </div>
-          </Stack>
-          <form onSubmit={handleSubmit}>
-            <Stack h={610} justify="space-between">
-              <TextInput
-                size="xl"
-                radius="xs"
-                label="Firstname"
-                placeholder="Firstname"
-                type="firstname"
-                value={firstname}
-                onChange={handleFirstnameChange}
-                required
-              />
-              <TextInput
-                size="xl"
-                radius="xs"
-                label="Surname"
-                placeholder="Surname"
-                type="surname"
-                value={surname}
-                onChange={handleSurnameChange}
-                required
-              />
-              <TextInput
-                label="E-mail"
-                placeholder="E-mail"
-                type="email"
-                value={email}
-                onChange={handleEmailChange}
-                required
-              />
-              <PasswordInput
-                size="xl"
-                radius="xs"
-                label="Password"
-                description="Enter a password with minimum 8 characters"
-                placeholder="Password"
-                type="password"
-                value={password}
-                onChange={handlePasswordChange}
-                required
-              />
-              <Button
-                variant="filled"
-                color="rgba(38, 18, 18, 1)"
-                size="xl"
-                radius="xs"
-                type="submit"
-              >
-                SIGN UP
-              </Button>
+    <div className={styles.background}>
+      <Stack h={1200} justify="center">
+        <Grid>
+          <Grid.Col span={2}></Grid.Col>
+          <div>
+            <Stack h={80}>
+              <div>
+                <h2>Hello</h2>
+                <h2>Please sign up to continue</h2>
+              </div>
             </Stack>
-          </form>
-        </div>
-        <Grid.Col span={4}></Grid.Col>
-        <Stack justify="flex-end">
-          <Grid.Col span={1}>
-            <ButtonBack />
-          </Grid.Col>
-        </Stack>
-      </Grid>
+            <form onSubmit={handleSubmit}>
+              <Stack h={610} justify="space-between">
+                <TextInput
+                  size="xl"
+                  radius="xs"
+                  label="Firstname"
+                  placeholder="Firstname"
+                  type="firstname"
+                  value={firstname}
+                  onChange={handleFirstnameChange}
+                  required
+                />
+                <TextInput
+                  size="xl"
+                  radius="xs"
+                  label="Surname"
+                  placeholder="Surname"
+                  type="surname"
+                  value={surname}
+                  onChange={handleSurnameChange}
+                  required
+                />
+                <TextInput
+                  label="E-mail"
+                  placeholder="E-mail"
+                  type="email"
+                  value={email}
+                  onChange={handleEmailChange}
+                  required
+                />
+                <PasswordInput
+                  size="xl"
+                  radius="xs"
+                  label="Password"
+                  description="Enter a password with minimum 8 characters"
+                  placeholder="Password"
+                  type="password"
+                  value={password}
+                  onChange={handlePasswordChange}
+                  required
+                />
+                <Button
+                  variant="filled"
+                  color="rgba(38, 18, 18, 1)"
+                  size="xl"
+                  radius="xs"
+                  type="submit"
+                >
+                  SIGN UP
+                </Button>
+              </Stack>
+            </form>
+          </div>
+          <Grid.Col span={4}></Grid.Col>
+          <Stack justify="flex-end">
+            <Grid.Col span={1}>
+              <ButtonBack />
+            </Grid.Col>
+          </Stack>
+        </Grid>
+      </Stack>
     </div>
   );
 }
