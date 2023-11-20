@@ -1,8 +1,11 @@
 import React from 'react'
 import { Button } from '@mantine/core';
+import Link from 'next/link';
 
 export default function ButtonViewBooking() {
   return (
-    <Button variant="filled" color="rgba(38, 18, 18, 1)" size="xl" radius="xs">View my booking</Button>
+    <Link href="">
+    <Button variant="filled" color="rgba(38, 18, 18, 1)" size="xl" radius="xs">VIEW MY BOOKING</Button>
+    </Link>
   )
 }

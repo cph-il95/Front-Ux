@@ -1,15 +1,10 @@
 import React, { useState } from "react";
-import {
-  Button,
-  PasswordInput,
-  TextInput,
-  Grid,
-  Stack,
-  Center,
-} from "@mantine/core";
+import { Button, PasswordInput, TextInput, Grid, Stack } from "@mantine/core";
 import { createClient } from "@supabase/supabase-js";
 import ButtonBack from "@/components/atoms/ButtonBack";
 import styles from "../../components/backgroundImage.module.css";
+import Link from "next/link";
+import { UserContext } from "@/context/user-context";
 
 export default function Signup() {
   // state på de forskellige inputs
@@ -39,7 +34,7 @@ export default function Signup() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("signing up witgh", firstname, surname, email, password);
+    console.log("signing up with", firstname, surname, email, password);
     signUpNewUser();
   };
 
@@ -120,7 +115,9 @@ export default function Signup() {
           <Grid.Col span={4}></Grid.Col>
           <Stack justify="flex-end">
             <Grid.Col span={1}>
-              <ButtonBack />
+              <Link href="/login">
+                <ButtonBack />
+              </Link>
             </Grid.Col>
           </Stack>
         </Grid>
