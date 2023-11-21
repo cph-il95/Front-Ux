@@ -6,15 +6,13 @@ import DefaultLayout from "@/components/Layouts/DefaultLayout";
 import { UserContext } from "@/context/user-context";
 
 export default function App({ Component, pageProps }) {
-  
-
   return (
     <MantineProvider>
-      <UserContext.Provider value={contextValue}>
-        <DefaultLayout>
-          <Component {...pageProps} />
-        </DefaultLayout>
-      </UserContext.Provider>
+      {/* <UserContext.Provider value={contextValue}> */}
+      <DefaultLayout>
+        <Component {...pageProps} />
+      </DefaultLayout>
+      {/* </UserContext.Provider> */}
     </MantineProvider>
   );
 }
