@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { DatePicker } from '@mantine/dates';
-import { Button, Grid, PasswordInput, Stack, TextInput } from "@mantine/core";
+import { Button, Grid, PasswordInput, TextInput } from "@mantine/core";
+
 
 
 const DateRangePicker = () => {
@@ -50,51 +51,44 @@ const DateRangePicker = () => {
   }
 
  
-
   return (
-    <div>
-
-      <h2>Select a Date, Start Time, and End Time</h2>
-      <div>
+    <Grid gutter="md">
+      <Grid.Col span={6}>
         <label>Date:</label>
         <DatePicker
           value={selectedDate}
           onChange={setSelectedDate}
-    
         />
-      </div>
-      <div>
+      </Grid.Col>
+      <Grid.Col span={3}>
         <label>Start Time:</label>
         <select value={startDate.getHours() + ':00'} onChange={handleStartTimeChange}>
           {generateTimes().map(time => (
             <option key={time} value={time}>{time}</option>
           ))}
         </select>
-      </div>
-      <div>
+      </Grid.Col>
+      <Grid.Col span={3}>
         <label>End Time:</label>
         <select value={endDate.getHours() + ':00'} onChange={handleEndTimeChange}>
           {generateTimes().map(time => (
             <option key={time} value={time}>{time}</option>
           ))}
         </select>
-      </div>
-      <p>
-        You selected {selectedDate.toLocaleDateString()} from{' '}
-        {startDate.toLocaleTimeString()} to {endDate.toLocaleTimeString()}
-      </p>
-
-     {/* <Button variant="filled" color="rgba(38, 18, 18, 1)" size="xl">Next</Button> */}
-
-
-    </div>
-
-
-    
-
-
-
+      </Grid.Col>
+      <Grid.Col span={12}>
+        <p>
+          You selected {selectedDate.toLocaleDateString()} from{' '}
+          {startDate.toLocaleTimeString()} to {endDate.toLocaleTimeString()}
+        </p>
+      </Grid.Col>
+      {/* Add your button here */}
+      {/* <Grid.Col span={12}>
+        <Button variant="filled" color="rgba(38, 18, 18, 1)" size="xl">Next</Button>
+      </Grid.Col> */}
+    </Grid>
   );
 };
+
 
 export default DateRangePicker;
