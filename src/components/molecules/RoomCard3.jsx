@@ -1,0 +1,23 @@
+import React from 'react'
+import { Text, Paper} from '@mantine/core';
+import ButtonSelectRoom from '../atoms/ButtonSelectRoom';
+
+export default function RoomCard3() {
+  return (
+    <Paper shadow="xs" p="xl">
+        <img src="4-kompri.png" alt="room 1.066" height={160} />
+        <Text fw={500}>Room 1.066</Text>
+      <Text size="sm" c="dimmed">
+        6 persons
+      </Text>
+      <ButtonSelectRoom/>
+    </Paper>
+  )
+
+
+  
+}
+
+
+
+

@@ -3,6 +3,6 @@ import { Button } from '@mantine/core';
 
 export default function ButtonBack() {
   return (
-    <Button variant="filled" color="rgba(38, 18, 18, 1)" size="xl" radius="xs">Back</Button>
+    <Button variant="filled" color="rgba(44, 46, 51, 1)" size="md" radius="xs">Back</Button>
   )
 };
