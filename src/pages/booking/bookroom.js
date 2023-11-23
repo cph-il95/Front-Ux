@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Grid, GridCol } from '@mantine/core'
+import { Grid, GridCol, Stepper } from '@mantine/core'
 import RoomCard1 from '@/components/molecules/RoomCard1'
 import RoomCard2 from '@/components/molecules/RoomCard2'
 import RoomCard3 from '@/components/molecules/RoomCard3'
@@ -17,8 +17,18 @@ const bookroom = () => {
         setSelectedRoom(roomName);
     };
 
+    const [active, setActive] = useState(2);
+
   return (
     <>   
+
+<Stepper active={active} onStepClick={setActive} iconPosition="right">
+       
+       <Stepper.Step label="Step 1" />
+       <Stepper.Step label="Step 2" />
+       <Stepper.Step label="Step 3" />
+     
+ </Stepper>
 
     <h4 className='h4-choose-room'>CHOOSE A ROOM</h4>
     
