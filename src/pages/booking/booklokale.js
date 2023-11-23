@@ -6,6 +6,7 @@ import RoomCard3 from '@/components/molecules/RoomCard3'
 import RoomCard4 from '@/components/molecules/RoomCard4'
 import ButtonBack from '@/components/atoms/ButtonBack'
 import ButtonNext from '@/components/atoms/ButtonNext'
+import Link from 'next/link'
 
 
 
@@ -19,7 +20,7 @@ const booklokale = () => {
   return (
     <>   
 
-    <h3>CHOOSE A ROOM</h3>
+    <h4 className='h4-choose-room'>CHOOSE A ROOM</h4>
     
     <Grid className='RoomCards1234'>
         <GridCol span={3}>
@@ -41,8 +42,17 @@ const booklokale = () => {
     </Grid>
 
     <Grid className='knapFremOgTilbage'>
-        <GridCol span={2} offset={1}><ButtonBack/></GridCol>
-        <GridCol span={2} offset={7}><ButtonNext/></GridCol>
+        <GridCol span={2} offset={1}>
+            <Link href="/booking">
+              <ButtonBack />
+            </Link>
+        </GridCol>
+        <GridCol span={2} offset={7}>
+            <Link href="#">
+              <ButtonNext/>  
+            </Link>
+            
+        </GridCol>
     </Grid>
     
     
