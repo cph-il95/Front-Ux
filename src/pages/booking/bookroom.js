@@ -10,7 +10,7 @@ import Link from 'next/link'
 
 
 
-const booklokale = () => {
+const bookroom = () => {
     const [selectedRoom, setSelectedRoom] = useState(null);
 
     const handleRoomSelect = (roomName) => {
@@ -48,7 +48,7 @@ const booklokale = () => {
             </Link>
         </GridCol>
         <GridCol span={2} offset={7}>
-            <Link href="#">
+            <Link href="/booking/reservation">
               <ButtonNext/>  
             </Link>
             
@@ -60,4 +60,4 @@ const booklokale = () => {
   );
 };
 
-export default booklokale;
+export default bookroom;
