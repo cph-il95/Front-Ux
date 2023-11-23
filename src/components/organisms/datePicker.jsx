@@ -52,8 +52,10 @@ const DateRangePicker = () => {
 
  
   return (
-    <Grid gutter="md">
+    <Grid gutter="md" style={{ marginTop: '150px' }}>
+      
       <Grid.Col span={3}  offset={4}> 
+      <h1 style={{ fontSize: '20px' }}>PICK A DAY AND TIME </h1>
         <label>Date:</label>
         <DatePicker
           value={selectedDate}
