@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { DatePicker } from '@mantine/dates';
-import { Button, Grid, PasswordInput, TextInput } from "@mantine/core";
+import { Button, Grid, PasswordInput, TextInput, Stack } from "@mantine/core";
 
 
 
@@ -19,7 +19,7 @@ const DateRangePicker = () => {
   const generateTimes = () => {
     const times = [];
     for (let i = 0; i < 24; i++) {
-      times.push(`${i.toString().padStart(2, '0')}:00`);
+      times.push(`${i.toString().padStart(2, '07')}:00`);
     }
     return times;
   };
@@ -53,22 +53,25 @@ const DateRangePicker = () => {
  
   return (
     <Grid gutter="md">
-      <Grid.Col span={6}>
+      <Grid.Col span={3}  offset={4}> 
         <label>Date:</label>
         <DatePicker
           value={selectedDate}
           onChange={setSelectedDate}
         />
       </Grid.Col>
-      <Grid.Col span={3}>
+      <Stack h={150}>
+      <Grid.Col span={12}>
         <label>Start Time:</label>
-        <select value={startDate.getHours() + ':00'} onChange={handleStartTimeChange}>
+        <select value={startDate.getHours() + '07:00'} onChange={handleStartTimeChange}>
           {generateTimes().map(time => (
             <option key={time} value={time}>{time}</option>
           ))}
         </select>
       </Grid.Col>
-      <Grid.Col span={3}>
+     
+      
+      <Grid.Col span={12}>
         <label>End Time:</label>
         <select value={endDate.getHours() + ':00'} onChange={handleEndTimeChange}>
           {generateTimes().map(time => (
@@ -76,7 +79,8 @@ const DateRangePicker = () => {
           ))}
         </select>
       </Grid.Col>
-      <Grid.Col span={12}>
+      </Stack>
+      <Grid.Col span={12} offset={4}>
         <p>
           You selected {selectedDate.toLocaleDateString()} from{' '}
           {startDate.toLocaleTimeString()} to {endDate.toLocaleTimeString()}
