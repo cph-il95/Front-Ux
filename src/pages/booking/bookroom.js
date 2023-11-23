@@ -22,7 +22,7 @@ const bookroom = () => {
   return (
     <>   
 
-<Grid>
+<Grid className='bookroom-steps'>
     <GridCol span={6} offset={3}>
         <Stepper size='xs' active={active}  allowNextStepsSelect={false}>
             <Stepper.Step label="Step 1">
@@ -37,6 +37,8 @@ const bookroom = () => {
     
 
     <h4 className='h4-choose-room'>CHOOSE A ROOM</h4>
+    
+    
     
     <Grid className='RoomCards1234'>
         <GridCol span={3}>

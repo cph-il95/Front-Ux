@@ -4,13 +4,23 @@
   border: 0;
 }
 
+/********************** bookroom siden starter her ****************/
+
 .knapFremOgTilbage {
   margin-top: 50px;
 }
 .RoomCards1234 {
-  margin: 50px;
+  margin: 0 50px;
   padding: 20px 10px 20px 10px;
 }
+.h4-choose-room{
+  margin-left: 55px;
+  margin-top: 50px;
+}
+.bookroom-steps{
+  margin-top: 20px;
+}
+/********************* bookroom siden slutter her ****************/
 
 header {
   height: 100px;
