@@ -51,10 +51,6 @@ export default function reservation() {
           </Link>
         </GridCol>
     </Grid>
-   
-
-    
-    
     </>
     
   )
