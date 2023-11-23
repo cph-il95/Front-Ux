@@ -36,18 +36,3 @@ export default function reservation() {
   )
 }
 
-
-function Demo() {
-  
-
-  return (
-    <>
-      
-
-      <Group justify="center" mt="xl">
-        <Button variant="default" onClick={prevStep}>Back</Button>
-        <Button onClick={nextStep}>Next step</Button>
-      </Group>
-    </>
-  );
-}
