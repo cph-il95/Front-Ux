@@ -4,7 +4,6 @@ import { createClient } from "@supabase/supabase-js";
 import ButtonBack from "@/components/atoms/ButtonBack";
 import styles from "../../components/backgroundImage.module.css";
 import Link from "next/link";
-import { UserContext } from "@/context/user-context";
 
 export default function Signup() {
   // state på de forskellige inputs

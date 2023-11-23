@@ -1,11 +1,12 @@
 import { Button, Grid, PasswordInput, Stack, TextInput } from "@mantine/core";
 import { createClient } from "@supabase/supabase-js";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function index() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const supabase = createClient(
     "https://mviilvaebgkbuyuwkrgd.supabase.co",
@@ -24,6 +25,7 @@ export default function index() {
     event.preventDefault();
     loginUser();
     console.log("user is logged in with email:", email);
+    setError("");
   };
 
   async function loginUser() {
@@ -31,7 +33,14 @@ export default function index() {
       email: email,
       password: password,
     });
+    if (error) {
+      setError("ops! your e-mail or password is incorrect");
+    }
   }
+
+  useEffect(() => {
+    localStorage.setItem("email", JSON.stringify(email));
+  }, [email]);
 
   return (
     <div>
@@ -60,6 +69,7 @@ export default function index() {
                 onChange={handleEmailChange}
                 required
               />
+              {error && <div style={{ color: "red" }}>{error}</div>}
               <PasswordInput
                 size="xl"
                 radius="xs"
@@ -70,6 +80,7 @@ export default function index() {
                 onChange={handlePasswordChange}
                 required
               />
+              {error && <div style={{ color: "red" }}>{error}</div>}
               <Button
                 variant="filled"
                 color="rgba(38, 18, 18, 1)"
