@@ -1,4 +1,5 @@
 import ButtonBack from '@/components/atoms/ButtonBack'
+import ButtonConfirm from '@/components/atoms/ButtonConfirm';
 import { Stepper, Grid, GridCol } from '@mantine/core';
 import Link from 'next/link'
 import React, {useState} from 'react'
@@ -12,7 +13,7 @@ export default function reservation() {
     
   return (
     <>
-    <Grid>
+    <Grid className='reservation-steps'>
         <GridCol span={6} offset={3}>
             <Stepper size='xs' active={active}  allowNextStepsSelect={false}>
                 <Stepper.Step label="Step 1">
@@ -26,7 +27,7 @@ export default function reservation() {
     </Grid>
     
 
-      <Grid>
+      <Grid className='reservation-info'>
         <GridCol span={12}>
             <h4>Your reservation</h4>
         </GridCol>
@@ -38,12 +39,21 @@ export default function reservation() {
         </GridCol>
       </Grid>
 
-    
+    <Grid className='knapTilbageOgConfirm'>
+    <GridCol span={2} offset={1}>
+          <Link href="/booking/bookroom">
+            <ButtonBack/>
+          </Link>
+        </GridCol>
+        <GridCol span={2} offset={7}>
+          <Link href="/booking/confirmation">
+            <ButtonConfirm/>
+          </Link>
+        </GridCol>
+    </Grid>
    
 
-    <Link href="/booking/bookroom">
-        <ButtonBack/>
-    </Link>
+    
     
     </>
     

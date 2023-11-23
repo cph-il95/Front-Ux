@@ -5,7 +5,6 @@
 }
 
 /********************** bookroom siden starter her ****************/
-
 .knapFremOgTilbage {
   margin-top: 50px;
 }
@@ -21,6 +20,20 @@
   margin-top: 20px;
 }
 /********************* bookroom siden slutter her ****************/
+
+
+
+/********************* reservation siden starter her *************/
+.reservation-steps{
+  margin-top: 20px;
+}
+.reservation-info{
+  margin: 50px 0 0 55px;
+}
+.knapTilbageOgConfirm{
+  margin: 300px 0;
+}
+/******************** reservation siden slutter her ***************/
 
 header {
   height: 100px;
