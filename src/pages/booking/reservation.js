@@ -13,7 +13,7 @@ export default function reservation() {
   return (
     <>
     
-    <Stepper active={active}  allowNextStepsSelect={false}>
+    <Stepper size='xs' active={active}  allowNextStepsSelect={false}>
         <Stepper.Step label="Step 1">
           
         </Stepper.Step>
@@ -21,11 +21,7 @@ export default function reservation() {
         
         </Stepper.Step>
         <Stepper.Step label="Step 3">
-          
         </Stepper.Step>
-        <Stepper.Completed>
-          Completed, click back button to get to previous step
-        </Stepper.Completed>
       </Stepper>
 
     <h4>Your reservation</h4>

@@ -17,18 +17,21 @@ const bookroom = () => {
         setSelectedRoom(roomName);
     };
 
-    const [active, setActive] = useState(2);
+    const [active, setActive] = useState(1);
 
   return (
     <>   
 
-<Stepper active={active} onStepClick={setActive} iconPosition="right">
-       
-       <Stepper.Step label="Step 1" />
-       <Stepper.Step label="Step 2" />
-       <Stepper.Step label="Step 3" />
-     
- </Stepper>
+<Stepper size='xs' active={active}  allowNextStepsSelect={false}>
+        <Stepper.Step label="Step 1">
+          
+        </Stepper.Step>
+        <Stepper.Step label="Step 2">
+        
+        </Stepper.Step>
+        <Stepper.Step label="Step 3">
+        </Stepper.Step>
+      </Stepper>
 
     <h4 className='h4-choose-room'>CHOOSE A ROOM</h4>
     
