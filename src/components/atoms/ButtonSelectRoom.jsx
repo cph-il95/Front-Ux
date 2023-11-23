@@ -1,19 +1,10 @@
-import React, {useState} from 'react'
-import { Button, CheckIcon } from '@mantine/core';
+import React from 'react'
+import { Button} from '@mantine/core';
 
-export default function ButtonSelectRoom() {
-
-  const [isSelected, setIsSelected] = useState(false);
-
-  const handleClick = () => {
-      setIsSelected(!isSelected);
-  
-  };
-
-
-
+const ButtonSelectRoom = ({onClick, selected}) => {
   return (
-    <Button onClick={handleClick} variant="filled" color="rgba(44, 46, 51, 1)" size="sm" radius="sm">{isSelected ? <CheckIcon style={{padding: 15, margin: '0 5px', color: 'white' }} /> : 'Select Room'}</Button>
-    
+    <Button  variant="filled" onClick={onClick} color={selected ? 'gray' : 'gray'} >Select room</Button>
   )
 }
+
+export default ButtonSelectRoom

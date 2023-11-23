@@ -1,7 +1,12 @@
 import React from 'react'
+import { Button } from '@mantine/core';
+import CheckIcon from '@mui/icons-material/Check';
 
-export default function ButtonRoomSelected() {
-  return (
-    <Button variant="filled" size="sm" radius="sm">Room Selected</Button>
+const ButtonRoomSelected = ({ onClick}) => {
+     return (
+    <Button onClick={onClick} variant="filled" color='blue' ><CheckIcon /></Button>
   )
 }
+ 
+export default ButtonRoomSelected
+

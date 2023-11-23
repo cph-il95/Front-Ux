@@ -1,8 +1,23 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Text, Paper} from '@mantine/core';
 import ButtonSelectRoom from '../atoms/ButtonSelectRoom';
+import ButtonRoomSelected from '../atoms/ButtonRoomSelected';
 
-export default function RoomCard2() {
+const RoomCard2 = ({selected, onClick}) => {
+
+    const [roomState, setRoomState] = useState('select');
+
+    useEffect(() => {
+        setRoomState(selected ? 'selected' : 'select');
+    }, [selected]);
+
+  const handleButtonClick = () => {
+    if (!selected) {
+        setRoomState('selected');
+        onClick('Room2');
+    }
+      
+  };
   return (
     <Paper shadow="xs" p="xl">
         <img src="/3-kompri.png" alt="room 3.312" height={160} />
@@ -10,11 +25,14 @@ export default function RoomCard2() {
       <Text size="sm" c="dimmed">
         6 persons
       </Text>
-      <ButtonSelectRoom/>
+      <div>
+        {roomState === 'select' && <ButtonSelectRoom onClick={handleButtonClick} selected={selected} />}
+        {roomState === 'selected' && <ButtonRoomSelected onClick={handleButtonClick}/>}
+      </div>
     </Paper>
   )
 }
 
 
-
+export default RoomCard2
 
