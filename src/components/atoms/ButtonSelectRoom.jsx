@@ -7,11 +7,13 @@ export default function ButtonSelectRoom() {
 
   const handleClick = () => {
       setIsSelected(!isSelected);
+  
   };
 
 
 
   return (
-    <Button onClick={handleClick} variant="filled" color="rgba(44, 46, 51, 1)" size="sm" radius="sm">{isSelected ? <CheckIcon style={{padding: 15 }} /> : 'Select Room'}</Button>
+    <Button onClick={handleClick} variant="filled" color="rgba(44, 46, 51, 1)" size="sm" radius="sm">{isSelected ? <CheckIcon style={{padding: 15, margin: '0 5px', color: 'white' }} /> : 'Select Room'}</Button>
+    
   )
 }

@@ -13,7 +13,8 @@ export function booklokale() {
 
   return (
     <>   
-    <p>CHOOSE A ROOM</p>
+
+    <h3>CHOOSE A ROOM</h3>
     
     <Grid className='RoomCards1234'>
       <GridCol span={3}><RoomCard1/></GridCol>
