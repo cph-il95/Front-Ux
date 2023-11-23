@@ -4,13 +4,18 @@ import { createClient } from "@supabase/supabase-js";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import styles from "../../components/backgroundImage.module.css";
+import { useRouter } from "next/router";
 
 export default function Start() {
   const [email, setEmail] = useState([]);
 
+  const router = useRouter();
+
   useEffect(() => {
     const email = JSON.parse(localStorage.getItem("email"));
-    if (email) {
+    if (!email) {
+      router.push("/signup");
+    } else {
       setEmail(email);
     }
   }, []);

@@ -3,11 +3,14 @@ import { createClient } from "@supabase/supabase-js";
 import Link from "next/link";
 import React, { useState } from "react";
 import styles from "../../components/backgroundImage.module.css";
+import { useRouter } from "next/router";
 
 export default function index() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
+  const router = useRouter();
 
   const supabase = createClient(
     "https://mviilvaebgkbuyuwkrgd.supabase.co",
@@ -38,6 +41,7 @@ export default function index() {
       setError("ops! your e-mail or password is incorrect");
     } else {
       localStorage.setItem("email", JSON.stringify(email));
+      router.push("/booking/start");
     }
   }
 
