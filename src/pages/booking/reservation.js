@@ -15,10 +15,8 @@ export default function reservation() {
     
     <Stepper size='xs' active={active}  allowNextStepsSelect={false}>
         <Stepper.Step label="Step 1">
-          
         </Stepper.Step>
         <Stepper.Step label="Step 2">
-        
         </Stepper.Step>
         <Stepper.Step label="Step 3">
         </Stepper.Step>
