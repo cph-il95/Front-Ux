@@ -1,7 +1,8 @@
 import { Button, Grid, PasswordInput, Stack, TextInput } from "@mantine/core";
 import { createClient } from "@supabase/supabase-js";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import styles from "../../components/backgroundImage.module.css";
 
 export default function index() {
   const [email, setEmail] = useState("");
@@ -35,66 +36,66 @@ export default function index() {
     });
     if (error) {
       setError("ops! your e-mail or password is incorrect");
+    } else {
+      localStorage.setItem("email", JSON.stringify(email));
     }
   }
 
-  useEffect(() => {
-    localStorage.setItem("email", JSON.stringify(email));
-  }, [email]);
-
   return (
-    <div>
-      <Grid>
-        <Grid.Col span={2}></Grid.Col>
-        <div>
-          <Stack h={50}>
-            <div></div>
-          </Stack>
-          <Stack h={80}>
-            <div>
-              <h2>Welcome</h2>
-              <h2>Please log in</h2>
-            </div>
-          </Stack>
-
-          <form onSubmit={handleSubmit}>
-            <Stack h={400} justify="space-between">
-              <TextInput
-                size="xl"
-                radius="xs"
-                label="E-mail"
-                placeholder="E-mail"
-                type="email"
-                value={email}
-                onChange={handleEmailChange}
-                required
-              />
-              {error && <div style={{ color: "red" }}>{error}</div>}
-              <PasswordInput
-                size="xl"
-                radius="xs"
-                label="Password"
-                placeholder="Password"
-                type="password"
-                value={password}
-                onChange={handlePasswordChange}
-                required
-              />
-              {error && <div style={{ color: "red" }}>{error}</div>}
-              <Button
-                variant="filled"
-                color="rgba(38, 18, 18, 1)"
-                size="xl"
-                radius="xs"
-                type="submit"
-              >
-                LOG IN
-              </Button>
-              <Link href="/signup">Don't have a user? Sign up here</Link>
+    <div className={styles.background}>
+      <Stack h={1200}>
+        <Grid>
+          <Grid.Col span={2}></Grid.Col>
+          <div>
+            <Stack h={50}>
+              <div></div>
             </Stack>
-          </form>
-        </div>
-      </Grid>
+            <Stack h={80}>
+              <div>
+                <h2>Welcome</h2>
+                <h2>Please log in</h2>
+              </div>
+            </Stack>
+
+            <form onSubmit={handleSubmit}>
+              <Stack h={400} justify="space-between">
+                <TextInput
+                  size="xl"
+                  radius="xs"
+                  label="E-mail"
+                  placeholder="E-mail"
+                  type="email"
+                  value={email}
+                  onChange={handleEmailChange}
+                  required
+                />
+                {error && <div style={{ color: "red" }}>{error}</div>}
+                <PasswordInput
+                  size="xl"
+                  radius="xs"
+                  label="Password"
+                  placeholder="Password"
+                  type="password"
+                  value={password}
+                  onChange={handlePasswordChange}
+                  required
+                />
+                {error && <div style={{ color: "red" }}>{error}</div>}
+                <Button
+                  variant="filled"
+                  color="rgba(38, 18, 18, 1)"
+                  size="xl"
+                  radius="xs"
+                  type="submit"
+                >
+                  LOG IN
+                </Button>
+                <Link href="/signup">Don't have a user? Sign up here</Link>
+              </Stack>
+            </form>
+          </div>
+        </Grid>
+      </Stack>
     </div>
   );
 }
