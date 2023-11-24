@@ -3,6 +3,9 @@ import ButtonBack from "@/components/atoms/ButtonBack";
 import ButtonNext from "@/components/atoms/Buttonnext";
 import RoomCard1 from "@/components/molecules/RoomCard1";
 import RoomCard2 from "@/components/molecules/RoomCard2";
+import RoomCard3 from "@/components/molecules/RoomCard3";
+import RoomCard4 from "@/components/molecules/RoomCard4";
+import { useEffect } from "react";
 import { Grid, GridCol } from "@mantine/core";
 import { useRouter } from "next/router";
 
