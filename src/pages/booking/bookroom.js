@@ -7,6 +7,7 @@ import RoomCard4 from "@/components/molecules/RoomCard4";
 import ButtonBack from "@/components/atoms/ButtonBack";
 import ButtonNext from "@/components/atoms/ButtonNext";
 import Link from "next/link";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 
 const bookroom = () => {

@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function ButtonNextBooking() {
   return (
-    <Link href="/booking/confirmation">
+    <Link href="/booking/bookroom">
     <Button 
     variant="filled" 
     color="rgba(38, 18, 18, 1)" 
