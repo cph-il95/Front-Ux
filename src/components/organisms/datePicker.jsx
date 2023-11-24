@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { DatePicker } from '@mantine/dates';
 import { Button, Grid, PasswordInput, TextInput, Stack } from "@mantine/core";
+import { useState } from 'react';
+import { Stepper, Button, Group } from '@mantine/core';
 
 
 
@@ -50,8 +52,11 @@ const DateRangePicker = () => {
     return null; // or some loading placeholder
   }
 
+
+
  
   return (
+
     <Grid gutter="md" style={{ marginTop: '150px' }}>
       
       <Grid.Col span={3}  offset={4}> 
