@@ -1,6 +1,5 @@
 import ButtonViewBooking from "@/components/atoms/ButtonViewBooking";
 import { Button, Center, Stack } from "@mantine/core";
-import { createClient } from "@supabase/supabase-js";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import styles from "../../components/backgroundImage.module.css";
@@ -26,7 +25,7 @@ export default function Start() {
         <div>
           <Stack justify="center">
             <h2>Hi {email}</h2>
-            <Link href="">
+            <Link href="/booking">
               <Stack justify="center" h={130}>
                 <Button
                   variant="filled"
