@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { DatePicker } from '@mantine/dates';
-import { Button, Grid, PasswordInput, TextInput, Stack } from "@mantine/core";
-import { useState } from 'react';
-import { Stepper, Button, Group } from '@mantine/core';
+import { Grid, PasswordInput, TextInput, Stack } from "@mantine/core";
 
 
 
