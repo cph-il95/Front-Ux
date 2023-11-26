@@ -1,6 +1,6 @@
 import React from "react";
 import ButtonBack from "@/components/atoms/ButtonBack";
-import ButtonNext from "@/components/atoms/Buttonnext";
+// import ButtonNext from "@/components/atoms/Buttonnext";
 import RoomCard1 from "@/components/molecules/RoomCard1";
 import RoomCard2 from "@/components/molecules/RoomCard2";
 import RoomCard3 from "@/components/molecules/RoomCard3";
@@ -23,7 +23,7 @@ export default function newbookings() {
   return (
     <div className="mybookings">
       <ButtonBack />
-      <ButtonNext />
+      {/* <ButtonNext /> */}
       <Grid>
         <GridCol span={3}>
           <RoomCard1 />
