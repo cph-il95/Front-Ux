@@ -4,6 +4,16 @@
   border: 0;
 }
 
+.box {
+  width: 650px;
+  height: 500px;
+  background-color: rgba(0, 0, 0, 0.648);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+}
+
 /********************** bookroom siden starter her ****************/
 .knapFremOgTilbage {
   margin-top: 50px;
@@ -12,31 +22,29 @@
   margin: 0 50px;
   padding: 20px 10px 20px 10px;
 }
-.h4-choose-room{
+.h4-choose-room {
   margin-left: 55px;
   margin-top: 50px;
 }
-.bookroom-steps{
+.bookroom-steps {
   margin-top: 20px;
 }
 /********************* bookroom siden slutter her ****************/
 
-
-
 /********************* reservation siden starter her *************/
-.reservation-steps{
+.reservation-steps {
   margin-top: 20px;
 }
-.reservation-info{
+.reservation-info {
   margin: 50px 0 0 55px;
 }
-.knapTilbageOgConfirm{
+.knapTilbageOgConfirm {
   margin: 300px 0;
 }
 /******************** reservation siden slutter her ***************/
 
 header {
-  height: 100px;
+  height: 10vh;
   background-color: #1864ab;
   display: flex;
   align-items: center;

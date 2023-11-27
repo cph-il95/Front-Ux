@@ -1,6 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import SeeBookings from "@/components/organisms/SeeBookings";
 
 export default function mybookings() {
   const router = useRouter();
@@ -13,5 +14,9 @@ export default function mybookings() {
     }
   }, []);
 
-  return <div>mybookings</div>;
+  return (
+    <div>
+      <SeeBookings></SeeBookings>
+    </div>
+  );
 }

@@ -35,6 +35,7 @@ export default function Signup() {
     event.preventDefault();
     console.log("signing up with", firstname, surname, email, password);
     signUpNewUser();
+    saveUserData();
   };
 
   async function signUpNewUser() {
@@ -44,6 +45,12 @@ export default function Signup() {
       email: email,
       password: password,
     });
+  }
+
+  async function saveUserData() {
+    const { data } = await supabase
+      .from("users")
+      .insert([{ firstname }, { surname }]);
   }
 
   return (
