@@ -45,12 +45,13 @@ export default function Signup() {
       email: email,
       password: password,
     });
+    // const {} = await supabase.from("users").insert([{ firstname, surname }]);
   }
 
   async function saveUserData() {
-    const { data } = await supabase
+    const { data, error } = await supabase
       .from("users")
-      .insert([{ firstname }, { surname }]);
+      .insert([{ firstname, surname, email }]);
   }
 
   return (
