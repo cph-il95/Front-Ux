@@ -45,22 +45,6 @@ export default function index() {
     }
   }
 
-  // async function fetchUserData() {
-  //   try {
-  //     const loggedInEmail = JSON.parse(localstorage.getItem("email"));
-  //     const { data, error } = await supabase
-  //     .from("users")
-  //     .select()
-  //     .eq("email", loggedInEmail);
-
-  //     if (error) {
-  //       console.log("it didn't work..", error)
-  //     } else {
-
-  //     }
-  //   }
-  // }
-
   return (
     <div className={styles.background}>
       <Stack h={1200}>
