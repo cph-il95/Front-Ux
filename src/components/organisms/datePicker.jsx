@@ -48,6 +48,8 @@ const DateRangePicker = () => {
 
   if (!startDate || !endDate || !selectedDate) {
     return null; // or some loading placeholder
+  } else {
+    localStorage.setItem("selectedDate", JSON.stringify(selectedDate));
   }
 
 

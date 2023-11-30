@@ -10,35 +10,34 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 
-
 const BookRoom = () => {
   const [selectedRoom, setSelectedRoom] = useState({});
   // const [selectedDate, setSelectedDate] = useState(null);
   const router = useRouter();
-  console.log("Setting selectedDate in localstorage:", JSON.stringify(selectedRoom));
+  console.log(
+    "Setting selectedDate in localstorage:",
+    JSON.stringify(selectedRoom)
+  );
 
   const handleRoomSelect = (room) => {
     setSelectedRoom(room);
 
-      localStorage.setItem("selectedRoom", JSON.stringify(room));
+    localStorage.setItem("selectedRoom", JSON.stringify(room));
   };
 
   const handleNextClick = () => {
     router.push("/booking/reservation");
-  }
+  };
 
-
-const [active] = useState(1);
+  const [active] = useState(1);
 
   // Sikre siden mod adgang hvis man ikke er logget ind
-useEffect(() => {
-  const email = JSON.parse(localStorage.getItem("email"));
-  if (!email) {
-    router.push("/signup");
-  }
-}, []);
-
-  
+  useEffect(() => {
+    const email = JSON.parse(localStorage.getItem("email"));
+    if (!email) {
+      router.push("/signup");
+    }
+  }, []);
 
   return (
     <>
@@ -92,7 +91,6 @@ useEffect(() => {
         </GridCol>
         <GridCol span={2} offset={7}>
           <Link href="/booking/reservation" onClick={handleNextClick}>
-            
             <ButtonNext />
           </Link>
         </GridCol>

@@ -7,6 +7,8 @@ import { useRouter } from "next/router";
 
 export default function index() {
   const [email, setEmail] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [surname, setSurname] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
@@ -28,6 +30,7 @@ export default function index() {
   const handleSubmit = (event) => {
     event.preventDefault();
     loginUser();
+    fetchUserData();
     console.log("user is logged in with email:", email);
     setError("");
   };
@@ -45,6 +48,21 @@ export default function index() {
     }
   }
 
+  async function fetchUserData() {
+    const loggedInEmail = JSON.parse(localStorage.getItem("email"));
+    const { data, error } = await supabase
+      .from("users")
+      .select(firstname, surname, email)
+      .eq("email".loggedInEmail);
+    if (data && data.lengt > 0) {
+      if (loggedInEmail == data[0].email) {
+        localStorage.setItem("firsname", JSON.stringify(firstname));
+        localStorage.setItem("surname", JSON.stringify(surname));
+      }
+    } else {
+      console.log(error);
+    }
+  }
   return (
     <div className={styles.background}>
       <Stack h={1200}>
