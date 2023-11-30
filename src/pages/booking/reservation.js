@@ -2,16 +2,29 @@ import ButtonBack from "@/components/atoms/ButtonBack";
 import ButtonConfirm from "@/components/atoms/ButtonConfirm";
 import { Stepper, Grid, GridCol } from "@mantine/core";
 import Link from "next/link";
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
-export default function reservation() {
-  const [active] = useState(2);
-  // const nextStep = () => setActive((current) => (current < 3 ? current + 1 : current));
-  // const prevStep = () => setActive((current) => (current > 0 ? current - 1 : current));
 
+export default function Reservation() {
   const router = useRouter();
+  const selectedDate = localStorage.getItem("selectedDate");
+  const selectedRoom = JSON.parse(localStorage.getItem("selectedRoom"));
+  const firstname = localStorage.getItem("firstname");
+  console.log("firstname:", firstname);
+  const surname = localStorage.getItem("surname");
+  console.log("surname:", surname);
+  const email = localStorage.getItem("email");
+  console.log("email:", email);
+
+ 
+
+  console.log("Selected Date:", selectedDate);
+  console.log("Selected Room:", selectedRoom);
+
+
+  const [active] = useState(2);
+
 
   // Sikre siden mod adgang hvis man ikke er logget ind
   useEffect(() => {
@@ -38,12 +51,18 @@ export default function reservation() {
           <h4>Your reservation</h4>
         </GridCol>
         <GridCol span={12}>
-          <text>Please confirm your reservation</text>
+          <p>Please confirm your reservation</p>
         </GridCol>
         <GridCol span={12}>
           <div className="reservations-info">
-            "Her skal der være info om brugeren ud fra login:))"
+            <h2>Reservation Details</h2>
+            <p> name: {firstname} {surname} </p>
+            <p> email: </p>
+            <p>Date: {selectedDate}</p>
+            <p>Time:</p>
+            <p>Room: {selectedRoom?.roomNumber} </p>
           </div>
+        
         </GridCol>
       </Grid>
 
@@ -61,4 +80,4 @@ export default function reservation() {
       </Grid>
     </>
   );
-}
+  };
