@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-// import styles from "../backgroundImage.module.css"
-import styles from "./SeeBooking.module.css"
+import styles from "../backgroundImage.module.css"
 import { Center, Stack } from '@mantine/core';
 import { createClient } from "@supabase/supabase-js";
-import Link from 'next/link';
+// import Link from 'next/link';
+import BookingCard from '../molecules/BookingCard';
 
 
 export default function SeeBookings() {
@@ -33,25 +33,19 @@ export default function SeeBookings() {
     .select(selectedDate, selectedRoom, email)
     .eq("email", loggedInEmail)
     console.log(data)
+    setData(data)
   }
 
-
+  const [data, setData] = useState([]);
 
   return (
     <div className={styles.background}>
         <Center h="90vh">
 
             <div className="box">
-                <Stack h={400}>
-                    <h2>MY BOOKINGS</h2>
-                    <div className={styles.bookingCard}>
-                          <p>{selectedDate}</p>
-                          <p>{selectedRoom}</p>
-                          <Link href="/booking/changebooking">
-                          <p>Edit</p>
-                          </Link>
-                    </div>
-                </Stack>
+              {data.slice().map(data => {
+                return <BookingCard key={BookingCard.data} bookingCard={data}/>
+              })}
             </div>
         </Center>
     </div>
