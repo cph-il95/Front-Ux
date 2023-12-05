@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, GridCol, JsonInput, Stepper } from "@mantine/core";
+import { Grid, GridCol, Stepper } from "@mantine/core";
 import RoomCard1 from "@/components/molecules/RoomCard1";
 import RoomCard2 from "@/components/molecules/RoomCard2";
 import RoomCard3 from "@/components/molecules/RoomCard3";
@@ -8,6 +8,7 @@ import ButtonBack from "@/components/atoms/ButtonBack";
 import ButtonNext from "@/components/atoms/ButtonNext";
 import Link from "next/link";
 import { useEffect } from "react";
+import { createClient } from "@supabase/supabase-js";
 import { useRouter } from "next/router";
 
 const BookRoom = () => {
@@ -19,6 +20,12 @@ const BookRoom = () => {
     JSON.stringify(selectedRoom)
   );
 
+  // forbinder supabase auth
+  const supabase = createClient(
+    "https://mviilvaebgkbuyuwkrgd.supabase.co",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im12aWlsdmFlYmdrYnV5dXdrcmdkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDAxMzY0MTMsImV4cCI6MjAxNTcxMjQxM30.dD4TGrVJHss_rKckmilVjQC2n2kOv2V2GFUPO0VOwyY"
+  );
+
   const handleRoomSelect = (room) => {
     setSelectedRoom(room);
 
@@ -27,6 +34,7 @@ const BookRoom = () => {
 
   const handleNextClick = () => {
     router.push("/booking/reservation");
+    // chechAvailability();
   };
 
   const [active] = useState(1);
@@ -38,6 +46,17 @@ const BookRoom = () => {
       router.push("/signup");
     }
   }, []);
+
+  // async function chechAvailability() {
+  //   const date = JSON.parse(localStorage.getItem("selectedDate"));
+  //   const room = JSON.parse(localStorage.getItem("selectedRoom"));
+  //   const { data, error } = await supabase
+  //     .from("bookings")
+  //     .select(selectedDate, selectedRoom);
+  //   if (date && room == selecetedDate && selectedRoom) {
+  //     console.log("the room is already booked that date");
+  //   }
+  // }
 
   return (
     <>

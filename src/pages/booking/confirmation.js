@@ -1,25 +1,57 @@
-import React from "react";
-import ButtonBack from "@/components/atoms/ButtonBack";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import Link from "next/link";
 import { Stepper, Grid, GridCol } from "@mantine/core";
+import Link from "next/link";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import { createClient } from "@supabase/supabase-js";
+import ButtonViewBooking from "@/components/atoms/ButtonViewBooking";
 
 export default function confirmation() {
   const router = useRouter();
+
+  const [email, setEmail] = useState([]);
+  const [firstname, setFirstname] = useState("");
+  const [surname, setSurname] = useState("");
+
+  const selectedDate = JSON.parse(localStorage.getItem("selectedDate"));
+  const selectedRoom = JSON.parse(localStorage.getItem("selectedRoom"));
+
+  const supabase = createClient(
+    "https://mviilvaebgkbuyuwkrgd.supabase.co",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im12aWlsdmFlYmdrYnV5dXdrcmdkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDAxMzY0MTMsImV4cCI6MjAxNTcxMjQxM30.dD4TGrVJHss_rKckmilVjQC2n2kOv2V2GFUPO0VOwyY"
+  );
 
   // Sikre siden mod adgang hvis man ikke er logget ind
   useEffect(() => {
     const email = JSON.parse(localStorage.getItem("email"));
     if (!email) {
       router.push("/signup");
+    } else {
+      setEmail(email);
+      fetchUserData();
     }
   }, []);
+
+  async function fetchUserData() {
+    const loggedInEmail = JSON.parse(localStorage.getItem("email"));
+    const { data, error } = await supabase
+      .from("users")
+      .select(firstname, surname, email)
+      .eq("email", loggedInEmail);
+    console.log(data);
+    if (data && data.length > 0) {
+      if (loggedInEmail == data[0].email) {
+        setFirstname(data[0].firstname);
+        setSurname(data[0].surname);
+      }
+    } else {
+      console.log("error fethcing data", error);
+    }
+  }
 
   const [active] = useState(3);
   return (
     <>
-    <Grid className="reservation-steps">
+      <Grid className="reservation-steps">
         <GridCol span={6} offset={3}>
           <Stepper size="xs" active={active} allowNextStepsSelect={false}>
             <Stepper.Step label="Step 1"></Stepper.Step>
@@ -29,16 +61,34 @@ export default function confirmation() {
         </GridCol>
       </Grid>
 
-     <div>Her skal der vises en bekræftelse på hvad der er blevet reserveret</div>
+      <Grid className="reservation-info">
+        <GridCol span={12}>
+          <h4>Your reservation</h4>
+        </GridCol>
+        <GridCol span={12}>
+          <p>Please confirm your reservation</p>
+        </GridCol>
+        <GridCol span={12}>
+          <div className="reservations-info">
+            <h2>Reservation Details</h2>
+            <p>
+              {" "}
+              name: {firstname} {surname}{" "}
+            </p>
+            <p> email: {email}</p>
+            <p>Date: {selectedDate}</p>
+            <p>Time:</p>
+            <p>Room: {selectedRoom} </p>
+          </div>
+        </GridCol>
+      </Grid>
 
-     <Link href="/booking/reservation">
-            <ButtonBack />
-          </Link>
-
-     </>
-  )
-  
-  
-  
- 
+      <Grid className="knapTilbageOgConfirm">
+        <GridCol span={2} offset={1}>
+          <ButtonViewBooking />
+        </GridCol>
+        <GridCol span={2} offset={7}></GridCol>
+      </Grid>
+    </>
+  );
 }
