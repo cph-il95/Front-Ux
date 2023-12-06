@@ -9,8 +9,9 @@ export default function BookingCard({bookingCard}) {
   
 
   return (
+    <>
     <div className={styles.bookingCard}>
-      <Grid>
+      <Grid style={{fontWeight:"500", padding:"5px", margin:"5px", height:"80px", display:"flex", alignItems:"center"}}>
         <label className="selectedDate" htmlFor='bookingCard.selectedDate'>{bookingCard.selectedDate}</label>
         <label className="selectedRoom" htmlFor='bookingCard.selectedRoom'>{bookingCard.selectedRoom}</label>
         <Grid.Col span={2}>
@@ -20,5 +21,6 @@ export default function BookingCard({bookingCard}) {
         </Grid.Col>
       </Grid>
     </div>
+    </>
   )
 }

@@ -41,7 +41,7 @@ export default function SeeBookings() {
     <div className={styles.background}>
         <Center h="90vh">
 
-            <div className="box">
+            <div className="box" style={{height: "400px", overflowY: "auto"}}>
               {data.slice().map(data => {
                 return <BookingCard key={BookingCard.data} bookingCard={data}/>
               })}
