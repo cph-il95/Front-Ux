@@ -11,11 +11,11 @@ export default function BookingCard({bookingCard}) {
   return (
     <>
     <div className={styles.bookingCard}>
-      <Grid style={{fontWeight:"500", padding:"5px", margin:"5px", height:"80px", display:"flex", alignItems:"center"}}>
-        <label className="selectedDate" htmlFor='bookingCard.selectedDate'>{bookingCard.selectedDate}</label>
-        <label className="selectedRoom" htmlFor='bookingCard.selectedRoom'>{bookingCard.selectedRoom}</label>
-        <Grid.Col span={2}>
-          <Link href="/booking/changebooking">
+      <Grid style={{fontWeight:"600", margin:"5px", height:"70px", display:"flex", alignItems:"center"}}>
+        <label style={{padding:"10px"}} className="selectedDate" htmlFor='bookingCard.selectedDate'>{bookingCard.selectedDate}</label>
+        <label style={{padding:"10px"}} className="selectedRoom" htmlFor='bookingCard.selectedRoom'>{bookingCard.selectedRoom}</label>
+        <Grid.Col span={2} >
+          <Link style={{color:"black", textDecorationLine:"none", fontWeight:"400", fontSize:"16px"}} href="/booking/changebooking">
           <p>Edit</p>
           </Link>
         </Grid.Col>
