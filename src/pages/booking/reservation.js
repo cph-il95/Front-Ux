@@ -13,8 +13,13 @@ export default function Reservation() {
   const [firstname, setFirstname] = useState("");
   const [surname, setSurname] = useState("");
 
-  const selectedDate = JSON.parse(localStorage.getItem("selectedDate"));
-  const selectedRoom = JSON.parse(localStorage.getItem("selectedRoom"));
+  const [selectedDate, setSelectedDate] = useState("not selected yet");
+  const [selectedRoom, setSelectedRoom] = useState("not selected yet");
+
+  if (typeof window !== "undefined") {
+    const selectedDate = JSON.parse(localStorage.getItem("selectedDate"));
+    const selectedRoom = JSON.parse(localStorage.getItem("selectedRoom"));
+  }
 
   const [active] = useState(2);
 
@@ -83,7 +88,7 @@ export default function Reservation() {
         </GridCol>
       </Grid>
 
-      <Grid className="reservation-info" style={{margin:"100px 0 0 130px"}} >
+      <Grid className="reservation-info" style={{ margin: "100px 0 0 130px" }}>
         <GridCol span={12}>
           <h4>Your reservation</h4>
         </GridCol>
@@ -91,22 +96,32 @@ export default function Reservation() {
           <p>Please confirm your reservation</p>
         </GridCol>
         <GridCol span={12}>
-          <div className="reservations-info" style={{color:"rgba(24, 100, 171, 1)", display:"flex", flexDirection:"row", fontWeight:"500", justifyContent:"space-between", width:"50%", marginTop:"20px"}}>
+          <div
+            className="reservations-info"
+            style={{
+              color: "rgba(24, 100, 171, 1)",
+              display: "flex",
+              flexDirection: "row",
+              fontWeight: "500",
+              justifyContent: "space-between",
+              width: "50%",
+              marginTop: "20px",
+            }}
+          >
             {/* <h2>Reservation Details</h2> */}
             <div className="date-room">
-              <p style={{padding:"20px 0"}}> {selectedDate}</p>
-              <p style={{padding:"20px 0"}}>{selectedRoom} </p>
+              <p style={{ padding: "20px 0" }}> {selectedDate}</p>
+              <p style={{ padding: "20px 0" }}>{selectedRoom} </p>
             </div>
-            
+
             <div className="name-email">
-              <p style={{padding:"20px 0"}}>
-              {" "}
-               {firstname} {surname}{" "}
+              <p style={{ padding: "20px 0" }}>
+                {" "}
+                {firstname} {surname}{" "}
               </p>
-              <p style={{padding:"20px 0"}}> {email}</p>
+              <p style={{ padding: "20px 0" }}> {email}</p>
             </div>
-            
-            
+
             {/* <p>Time:</p> */}
           </div>
         </GridCol>
