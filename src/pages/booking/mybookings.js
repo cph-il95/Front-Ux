@@ -15,8 +15,11 @@ export default function mybookings() {
   }, []);
 
   return (
+    <>
     <div>
       <SeeBookings></SeeBookings>
     </div>
+    
+  </>
   );
 }

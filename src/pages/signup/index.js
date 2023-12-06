@@ -55,20 +55,20 @@ export default function Signup() {
 
   return (
     <div className={styles.background}>
-      <Stack h={1200} justify="center">
+      <Stack h={1200} justify="center" style={{width:"600px", margin:"-50px 0 0 -600px"}}>
         <Grid>
           <Grid.Col span={2}></Grid.Col>
           <div>
-            <Stack h={80}>
+            <Stack h={80} style={{color:"white"}}>
               <div>
-                <h2>Hello</h2>
-                <h2>Please sign up to continue</h2>
+                <h3>Hello</h3>
+                <h3>Please sign up to continue</h3>
               </div>
             </Stack>
-            <form onSubmit={handleSubmit}>
-              <Stack h={610} justify="space-between">
+            <form onSubmit={handleSubmit} style={{width:"400px"}} >
+              <Stack h={450} justify="space-between" >
                 <TextInput
-                  size="xl"
+                  size="md"
                   radius="xs"
                   label="Firstname"
                   placeholder="Firstname"
@@ -76,9 +76,12 @@ export default function Signup() {
                   value={firstname}
                   onChange={handleFirstnameChange}
                   required
+                  styles={{
+                    label:{color:"white"},
+                  }}
                 />
                 <TextInput
-                  size="xl"
+                  size="md"
                   radius="xs"
                   label="Surname"
                   placeholder="Surname"
@@ -86,17 +89,24 @@ export default function Signup() {
                   value={surname}
                   onChange={handleSurnameChange}
                   required
+                  styles={{
+                    label:{color:"white"},
+                  }}
                 />
                 <TextInput
                   label="E-mail"
+                  size="md"
                   placeholder="E-mail"
                   type="email"
                   value={email}
                   onChange={handleEmailChange}
                   required
+                  styles={{
+                    label:{color:"white"},
+                  }}
                 />
                 <PasswordInput
-                  size="xl"
+                  size="md"
                   radius="xs"
                   label="Password"
                   description="Enter a password with minimum 8 characters"
@@ -105,11 +115,15 @@ export default function Signup() {
                   value={password}
                   onChange={handlePasswordChange}
                   required
+                  styles={{
+                    label:{color:"white"},
+                    description:{color:"white"}
+                  }}
                 />
                 <Button
                   variant="filled"
-                  color="rgba(38, 18, 18, 1)"
-                  size="xl"
+                  color="rgba(44, 46, 51, 1)"
+                  size="md"
                   radius="xs"
                   type="submit"
                 >
@@ -118,8 +132,8 @@ export default function Signup() {
               </Stack>
             </form>
           </div>
-          <Grid.Col span={4}></Grid.Col>
-          <Stack justify="flex-end">
+          <Grid.Col span={2}></Grid.Col>
+          <Stack justify="flex-end" style={{marginTop:"20px"}}>
             <Grid.Col span={1}>
               <Link href="/login">
                 <ButtonBack />

@@ -46,7 +46,7 @@ const HomePage = () => {
             display: "flex",
             justifyContent: "space-between",
             width: "95%",
-            padding: "100px",
+            padding: "0px 100px",
             paddingTop: "30px",
           }}
         >

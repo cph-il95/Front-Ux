@@ -51,16 +51,16 @@ export default function Start() {
       <Center h={1000}>
         <div>
           <Stack justify="center">
-            <h2>
-              Hi {firstname} {surname}
+            <h2 style={{color:"white", fontSize:"20px", textDecoration:"underline", textUnderlineOffset:"20px", textDecorationThickness:"1px", fontWeight:"400", marginLeft:"35px"}} >
+              HI {firstname} {surname}
             </h2>
             <Link href="/booking">
               <Stack justify="center" h={130}>
                 <Button
                   variant="filled"
-                  size="xl"
+                  size="md"
                   radius="xs"
-                  color="rgba(38, 18, 18, 1)"
+                  color="rgba(44, 46, 51, 1)"
                 >
                   NEW BOOKING
                 </Button>

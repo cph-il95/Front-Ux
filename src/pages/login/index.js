@@ -65,24 +65,24 @@ export default function index() {
   }
   return (
     <div className={styles.background}>
-      <Stack h={1200}>
+      <Stack style={{width:"600px", margin:"-200px 0 0 -800px"}} >
         <Grid>
-          <Grid.Col span={2}></Grid.Col>
+          <Grid.Col span={4}></Grid.Col>
           <div>
             <Stack h={50}>
               <div></div>
             </Stack>
             <Stack h={80}>
-              <div>
-                <h2>Welcome</h2>
-                <h2>Please log in</h2>
+              <div style={{color:"white"}}>
+                <h3>Welcome</h3>
+                <h3>Please log in</h3>
               </div>
             </Stack>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} style={{width:"400px"}}>
               <Stack h={400} justify="space-between">
                 <TextInput
-                  size="xl"
+                  size="md"
                   radius="xs"
                   label="E-mail"
                   placeholder="E-mail"
@@ -90,10 +90,13 @@ export default function index() {
                   value={email}
                   onChange={handleEmailChange}
                   required
+                  styles={{
+                    label:{color:"white"},
+                  }}
                 />
                 {error && <div style={{ color: "red" }}>{error}</div>}
                 <PasswordInput
-                  size="xl"
+                  size="md"
                   radius="xs"
                   label="Password"
                   placeholder="Password"
@@ -101,18 +104,21 @@ export default function index() {
                   value={password}
                   onChange={handlePasswordChange}
                   required
+                  styles={{
+                    label:{color:"white"},
+                  }}
                 />
                 {error && <div style={{ color: "red" }}>{error}</div>}
                 <Button
                   variant="filled"
-                  color="rgba(38, 18, 18, 1)"
-                  size="xl"
+                  color="rgba(44, 46, 51, 1)"
+                  size="md"
                   radius="xs"
                   type="submit"
                 >
                   LOG IN
                 </Button>
-                <Link href="/signup">Don't have a user? Sign up here</Link>
+                <Link style={{color:"white", marginBottom:"10px", textDecorationLine:"none"}} href="/signup">Don't have a user? Sign up here</Link>
               </Stack>
             </form>
           </div>

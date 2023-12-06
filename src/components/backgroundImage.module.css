@@ -1,7 +1,12 @@
 .background {
   background-image: url("../img/baggrund-komp.png");
-  width: auto;
-  height: auto;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-size: cover;
   background-repeat: no-repeat;
+  
 }

@@ -7,8 +7,8 @@ export default function ButtonBackBooking() {
     <Link href="/booking/start">
     <Button 
     variant="filled" 
-    color="rgba(38, 18, 18, 1)" 
-    size="xl" 
+    color="rgba(44, 46, 51, 1)" 
+    size="md" 
     radius="xs"
     >Back</Button>
     </Link>

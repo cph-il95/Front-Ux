@@ -102,13 +102,24 @@ const BookRoom = () => {
         </GridCol>
       </Grid>
 
-      <Grid className="knapFremOgTilbage">
-        <GridCol span={2} offset={1}>
+      <Grid className="knapFremOgTilbage" 
+      style={{
+        display:"flex", 
+        justifyContent:"space-between", 
+        width:"95%", 
+        padding:"0px 99px"
+      }} >
+        <GridCol span={2}>
           <Link href="/booking">
             <ButtonBack />
           </Link>
         </GridCol>
-        <GridCol span={2} offset={7}>
+        <GridCol 
+        span={1} 
+        style={{
+          marginLeft:"888px",
+          marginTop:"4px"
+          }}>
           <Link href="/booking/reservation" onClick={handleNextClick}>
             <ButtonNext />
           </Link>
