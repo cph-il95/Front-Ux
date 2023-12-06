@@ -31,6 +31,7 @@ export default function Reservation() {
     } else {
       setEmail(email);
       fetchUserData();
+      checkBooking();
     }
   }, []);
 
@@ -48,6 +49,20 @@ export default function Reservation() {
       }
     } else {
       console.log("error fethcing data", error);
+    }
+  }
+
+  async function checkBooking() {
+    const { data, error } = await supabase
+      .from("bookings")
+      .select()
+      .eq("selectedDate", selectedDate)
+      .eq("selectedRoom", selectedRoom);
+    console.log(data);
+    if (data.length > 0) {
+      console.log("there is something in the array");
+    } else {
+      console.log("there is nothing in the array");
     }
   }
 
