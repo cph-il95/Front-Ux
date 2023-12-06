@@ -13,12 +13,14 @@ import { useRouter } from "next/router";
 
 const BookRoom = () => {
   const [selectedRoom, setSelectedRoom] = useState({});
+  const [error, setError] = useState("false");
   // const [selectedDate, setSelectedDate] = useState(null);
   const router = useRouter();
   console.log(
     "Setting selectedDate in localstorage:",
     JSON.stringify(selectedRoom)
   );
+  
 
   // forbinder supabase auth
   const supabase = createClient(
@@ -33,10 +35,16 @@ const BookRoom = () => {
   };
 
   const handleNextClick = () => {
-    router.push("/booking/reservation");
+    if (selectedRoom) {
+      router.push("/booking/reservation");
+    } else  {
+      setError("Please select a room before proceeding.")
+    }
+    
     // chechAvailability();
   };
 
+  
   const [active] = useState(1);
 
   // Sikre siden mod adgang hvis man ikke er logget ind
@@ -94,7 +102,7 @@ const BookRoom = () => {
           />
         </GridCol>
 
-        <GridCol span={3}>
+        <GridCol span={3} error={error}>
           <RoomCard4
             selected={selectedRoom === "Room 2.208"}
             onClick={() => handleRoomSelect("Room 2.208")}
@@ -121,7 +129,7 @@ const BookRoom = () => {
           marginTop:"4px"
           }}>
           <Link href="/booking/reservation" onClick={handleNextClick}>
-            <ButtonNext />
+            <ButtonNext disabled={!selectedRoom} />
           </Link>
         </GridCol>
       </Grid>

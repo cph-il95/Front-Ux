@@ -14,7 +14,7 @@ const RoomCard4 = ({selected, onClick}) => {
     const handleButtonClick = () => {
         if (!selected) {
             setRoomState('selected');
-            onClick('Room4');
+            onClick('Room 2.208');
         }
         
     };
