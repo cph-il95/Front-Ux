@@ -2,9 +2,6 @@ import React, { useEffect, useState } from 'react'
 import styles from "../backgroundImage.module.css"
 import { Center, Stack } from '@mantine/core';
 import { createClient } from "@supabase/supabase-js";
-import ButtonBack from "@/components/atoms/ButtonBack";
-import Link from "next/link";
-import { Grid, GridCol } from "@mantine/core";
 import BookingCard from '../molecules/BookingCard';
 
 
@@ -50,13 +47,7 @@ export default function SeeBookings() {
               })}
             </div>
         </Center>
-        <Grid>
-      <GridCol span={2} offset={1}>
-        <Link href="/booking/start">
-        <ButtonBack />
-        </Link>
-      </GridCol>
-    </Grid>
+       
     </div>
   );
 }
