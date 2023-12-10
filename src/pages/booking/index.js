@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DateRangePicker from "@/components/organisms/datePicker"; // Adjust the path as necessary
+import DateRangePicker from "@/components/organisms/datePicker"; 
 import { MantineProvider, Grid, GridCol, Stepper } from "@mantine/core";
 import ButtonBackBooking from "@/components/atoms/ButtonBackBooking";
 import ButtonNextBooking from "@/components/atoms/ButtonNextBooking";
@@ -7,13 +7,14 @@ import ButtonNextBooking from "@/components/atoms/ButtonNextBooking";
 
 const HomePage = () => {
   // const router = useRouter();
-  const [selectedDate, setSelectedDate] = useState("");
-
+  const [selectedDate, setSelectedDate] = useState(""); 
+  
   const handleDateSelection = (date) => {
     console.log("Selected Date before localstorage:", date);
 
     setSelectedDate(date);
     console.log("Selected Date in HomePage after:", date);
+    
   };
 
   const handleNextClick = () => {

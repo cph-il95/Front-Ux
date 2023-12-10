@@ -5,10 +5,31 @@ import { createClient } from "@supabase/supabase-js";
 import BookingCard from '../molecules/BookingCard';
 
 
+
+// jeg laver delete knappen
+
+const ParentComponent = () => {
+  const handleDelete = (bookingId) => {
+    // Implement your logic to delete the booking with the given ID
+    console.log(`Deleting booking with ID: ${bookingId}`);
+  }
+
+
+}
+
+
+
+
+
+
 export default function SeeBookings() {
   const [email, setEmail] = useState([]);
   const [selectedDate, setSelectedDate] = useState("")
   const [selectedRoom, setSelectedRoom] = useState("")
+
+
+
+
 
   const supabase = createClient(
     "https://mviilvaebgkbuyuwkrgd.supabase.co",
@@ -37,17 +58,34 @@ export default function SeeBookings() {
 
   const [data, setData] = useState([]);
 
+
+  // Funktion til at håndtere sletning af en booking
+
+  const handleDelete = async (bookingId) => {
+    const { error } = await supabase
+      .from('bookings') // Målretter 'bookings' tabellen i Supabase
+      .delete()// Sletteoperation
+      .match({ id: bookingId });// Specificerer, hvilken booking der skal slettes efter ID
+
+    if (error) {
+      console.error('Error deleting booking:', error); 
+      return;
+      // Logger fejl
+    }
+    fetchUserData();// Opdaterer bookinglisten efter sletning
+  }
+
   return (
     <div className={styles.background}>
-        <Center h="90vh">
-
-            <div className="box" style={{height: "400px", overflowY: "auto"}}>
-              {data.slice().map(data => {
-                return <BookingCard key={BookingCard.data} bookingCard={data}/>
-              })}
-            </div>
-        </Center>
-       
+      <Center h="90vh">
+        <div className="box" style={{ height: "400px", overflowY: "auto" }}>
+          {data.slice().map(dataItem => {
+            return <BookingCard key={dataItem.id} bookingCard={dataItem} onDelete={handleDelete}/>
+          })}
+        </div>
+      </Center>
     </div>
   );
+
+
 }
