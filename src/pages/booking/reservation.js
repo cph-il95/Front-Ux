@@ -13,13 +13,16 @@ export default function Reservation() {
   const [firstname, setFirstname] = useState("");
   const [surname, setSurname] = useState("");
 
-  const [selectedDate, setSelectedDate] = useState("not selected yet");
-  const [selectedRoom, setSelectedRoom] = useState("not selected yet");
+  const [selectedDate, setSelectedDate] = useState([]);
+  const [selectedRoom, setSelectedRoom] = useState([]);
 
-  if (typeof window !== "undefined") {
-    const selectedDate = JSON.parse(localStorage.getItem("selectedDate"));
-    const selectedRoom = JSON.parse(localStorage.getItem("selectedRoom"));
-  }
+  // if (typeof window !== "undefined") {
+  //   const selectedDate = JSON.parse(localStorage.getItem("selectedDate"));
+  //   const selectedRoom = JSON.parse(localStorage.getItem("selectedRoom"));
+  // }
+
+  // const selectedDate = JSON.parse(localStorage.getItem("selectedDate"));
+  // const selectedRoom = JSON.parse(localStorage.getItem("selectedRoom"));
 
   const [active] = useState(2);
 
@@ -37,6 +40,19 @@ export default function Reservation() {
       setEmail(email);
       fetchUserData();
       checkBooking();
+    }
+
+    if (typeof window !== "undefined") {
+      const storedSelectedDate = JSON.parse(
+        localStorage.getItem("selectedDate")
+      );
+      const storedSelectedRoom = JSON.parse(
+        localStorage.getItem("selectedRoom")
+      );
+      if (storedSelectedDate && storedSelectedRoom) {
+        setSelectedDate(storedSelectedDate);
+        setSelectedRoom(storedSelectedRoom);
+      }
     }
   }, []);
 
@@ -64,10 +80,10 @@ export default function Reservation() {
       .eq("selectedDate", selectedDate)
       .eq("selectedRoom", selectedRoom);
     console.log(data);
-    if (data.length > 0) {
+    if (data && data.length > 0) {
       console.log("there is something in the array");
     } else {
-      console.log("there is nothing in the array");
+      console.log("there is nothing in the array", error);
     }
   }
 
