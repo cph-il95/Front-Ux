@@ -81,8 +81,8 @@ export default function confirmation() {
         </GridCol>
         <GridCol span={12}>
           <p style={{ color: "rgba(92, 95, 102, 1)" }}>
-            Remember that you can review your reservation details under my
-            reservations
+            Remember that you can review your reservation details under "My
+            bookings"
           </p>
         </GridCol>
         <GridCol span={12}>

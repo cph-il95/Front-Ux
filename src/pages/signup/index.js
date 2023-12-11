@@ -4,6 +4,7 @@ import { createClient } from "@supabase/supabase-js";
 import ButtonBack from "@/components/atoms/ButtonBack";
 import styles from "../../components/backgroundImage.module.css";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Signup() {
   // state på de forskellige inputs
@@ -11,6 +12,8 @@ export default function Signup() {
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const router = useRouter();
 
   // forbinder supabase auth
   const supabase = createClient(
@@ -51,22 +54,29 @@ export default function Signup() {
     const { data, error } = await supabase
       .from("users")
       .insert([{ firstname, surname, email }]);
+    if (!error) {
+      router.push("/login");
+    }
   }
 
   return (
     <div className={styles.background}>
-      <Stack h={1200} justify="center" style={{width:"600px", margin:"-50px 0 0 -600px"}}>
+      <Stack
+        h={1200}
+        justify="center"
+        style={{ width: "600px", margin: "-50px 0 0 -600px" }}
+      >
         <Grid>
           <Grid.Col span={2}></Grid.Col>
           <div>
-            <Stack h={80} style={{color:"white"}}>
+            <Stack h={80} style={{ color: "white" }}>
               <div>
                 <h3>Hello</h3>
                 <h3>Please sign up to continue</h3>
               </div>
             </Stack>
-            <form onSubmit={handleSubmit} style={{width:"400px"}} >
-              <Stack h={450} justify="space-between" >
+            <form onSubmit={handleSubmit} style={{ width: "400px" }}>
+              <Stack h={450} justify="space-between">
                 <TextInput
                   size="md"
                   radius="xs"
@@ -77,7 +87,7 @@ export default function Signup() {
                   onChange={handleFirstnameChange}
                   required
                   styles={{
-                    label:{color:"white"},
+                    label: { color: "white" },
                   }}
                 />
                 <TextInput
@@ -90,7 +100,7 @@ export default function Signup() {
                   onChange={handleSurnameChange}
                   required
                   styles={{
-                    label:{color:"white"},
+                    label: { color: "white" },
                   }}
                 />
                 <TextInput
@@ -102,7 +112,7 @@ export default function Signup() {
                   onChange={handleEmailChange}
                   required
                   styles={{
-                    label:{color:"white"},
+                    label: { color: "white" },
                   }}
                 />
                 <PasswordInput
@@ -116,8 +126,8 @@ export default function Signup() {
                   onChange={handlePasswordChange}
                   required
                   styles={{
-                    label:{color:"white"},
-                    description:{color:"white"}
+                    label: { color: "white" },
+                    description: { color: "white" },
                   }}
                 />
                 <Button
@@ -133,7 +143,7 @@ export default function Signup() {
             </form>
           </div>
           <Grid.Col span={2}></Grid.Col>
-          <Stack justify="flex-end" style={{marginTop:"20px"}}>
+          <Stack justify="flex-end" style={{ marginTop: "20px" }}>
             <Grid.Col span={1}>
               <Link href="/login">
                 <ButtonBack />

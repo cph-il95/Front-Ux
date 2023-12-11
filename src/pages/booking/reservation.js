@@ -7,8 +7,6 @@ import { useRouter } from "next/router";
 import { createClient } from "@supabase/supabase-js";
 
 export default function Reservation() {
-  const router = useRouter();
-
   const [email, setEmail] = useState([]);
   const [firstname, setFirstname] = useState("");
   const [surname, setSurname] = useState("");
@@ -16,6 +14,8 @@ export default function Reservation() {
   const [selectedRoom, setSelectedRoom] = useState([]);
   const [error, setError] = useState("Please confirm your reservation");
   const [active] = useState(2);
+
+  const router = useRouter();
 
   const supabase = createClient(
     "https://mviilvaebgkbuyuwkrgd.supabase.co",
