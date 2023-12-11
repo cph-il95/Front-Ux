@@ -49,7 +49,7 @@ export default function Start() {
 
   return (
     <div className={styles.background}>
-      <Center h={1000}>
+      <Center>
         <div>
           <Stack justify="center">
             <h2
