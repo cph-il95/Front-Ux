@@ -12,13 +12,8 @@ export default function confirmation() {
   const [firstname, setFirstname] = useState("");
   const [surname, setSurname] = useState("");
 
-  const [selectedDate, setSelectedDate] = useState("not selected yet");
-  const [selectedRoom, setSelectedRoom] = useState("not selected yet");
-
-  if (typeof window !== "undefined") {
-    const selectedDate = JSON.parse(localStorage.getItem("selectedDate"));
-    const selectedRoom = JSON.parse(localStorage.getItem("selectedRoom"));
-  }
+  const [selectedDate, setSelectedDate] = useState([]);
+  const [selectedRoom, setSelectedRoom] = useState([]);
 
   const supabase = createClient(
     "https://mviilvaebgkbuyuwkrgd.supabase.co",
@@ -33,6 +28,20 @@ export default function confirmation() {
     } else {
       setEmail(email);
       fetchUserData();
+    }
+    if (typeof window !== "undefined") {
+      const storedSelectedDate = JSON.parse(
+        localStorage.getItem("selectedDate")
+      );
+      const storedSelectedRoom = JSON.parse(
+        localStorage.getItem("selectedRoom")
+      );
+      if (storedSelectedDate && storedSelectedRoom) {
+        setSelectedDate(storedSelectedDate);
+        setSelectedRoom(storedSelectedRoom);
+      }
+    } else {
+      router.push("/booking/start");
     }
   }, []);
 
