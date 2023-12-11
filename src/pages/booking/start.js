@@ -38,6 +38,7 @@ export default function Start() {
     console.log(data);
     if (data && data.length > 0) {
       if (loggedInEmail == data[0].email) {
+        // Sætter navn fra supabase tabel, så man kan se det når man er på siden
         setFirstname(data[0].firstname);
         setSurname(data[0].surname);
       }
@@ -51,7 +52,17 @@ export default function Start() {
       <Center h={1000}>
         <div>
           <Stack justify="center">
-            <h2 style={{color:"white", fontSize:"20px", textDecoration:"underline", textUnderlineOffset:"20px", textDecorationThickness:"1px", fontWeight:"400", marginLeft:"35px"}} >
+            <h2
+              style={{
+                color: "white",
+                fontSize: "20px",
+                textDecoration: "underline",
+                textUnderlineOffset: "20px",
+                textDecorationThickness: "1px",
+                fontWeight: "400",
+                marginLeft: "35px",
+              }}
+            >
               HI {firstname} {surname}
             </h2>
             <Link href="/booking">

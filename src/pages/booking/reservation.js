@@ -12,18 +12,9 @@ export default function Reservation() {
   const [email, setEmail] = useState([]);
   const [firstname, setFirstname] = useState("");
   const [surname, setSurname] = useState("");
-
   const [selectedDate, setSelectedDate] = useState([]);
   const [selectedRoom, setSelectedRoom] = useState([]);
-
-  // if (typeof window !== "undefined") {
-  //   const selectedDate = JSON.parse(localStorage.getItem("selectedDate"));
-  //   const selectedRoom = JSON.parse(localStorage.getItem("selectedRoom"));
-  // }
-
-  // const selectedDate = JSON.parse(localStorage.getItem("selectedDate"));
-  // const selectedRoom = JSON.parse(localStorage.getItem("selectedRoom"));
-
+  const [error, setError] = useState("Please confirm your reservation");
   const [active] = useState(2);
 
   const supabase = createClient(
@@ -53,6 +44,8 @@ export default function Reservation() {
         setSelectedDate(storedSelectedDate);
         setSelectedRoom(storedSelectedRoom);
       }
+    } else {
+      router.push("/booking/start");
     }
   }, []);
 
@@ -74,13 +67,19 @@ export default function Reservation() {
   }
 
   async function checkBooking() {
+    const date = JSON.parse(localStorage.getItem("selectedDate"));
+    const room = JSON.parse(localStorage.getItem("selectedRoom"));
     const { data, error } = await supabase
       .from("bookings")
       .select()
-      .eq("selectedDate", selectedDate)
-      .eq("selectedRoom", selectedRoom);
+      .eq("selectedDate", date)
+      .eq("selectedRoom", room);
     console.log(data);
     if (data && data.length > 0) {
+      setError(
+        "The room is already booked on this date, please choose a new room or date"
+      );
+
       console.log("there is something in the array");
     } else {
       console.log("there is nothing in the array", error);
@@ -109,7 +108,7 @@ export default function Reservation() {
           <h4>Your reservation</h4>
         </GridCol>
         <GridCol span={12}>
-          <p>Please confirm your reservation</p>
+          {error && <div style={{ color: "red" }}>{error}</div>}
         </GridCol>
         <GridCol span={12}>
           <div
