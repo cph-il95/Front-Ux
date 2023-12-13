@@ -5,7 +5,7 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { createClient } from "@supabase/supabase-js";
-import { useDisclosure } from '@mantine/hooks';
+import { useDisclosure } from "@mantine/hooks";
 
 export default function Reservation() {
   // State hooks til at gemme brugerdata og reservationsspecifik information
@@ -53,7 +53,7 @@ export default function Reservation() {
     }
   }, []);
 
-    // Funktion til at hente brugerdata fra Supabase
+  // Funktion til at hente brugerdata fra Supabase
   async function fetchUserData() {
     const loggedInEmail = JSON.parse(localStorage.getItem("email"));
     const { data, error } = await supabase
@@ -94,28 +94,30 @@ export default function Reservation() {
 
   // Funktion til at håndtere bekræftelsesklik og indsætte reservation i databasen
   async function handleConfirmClick() {
-    toggle();
     setTimeout(async () => {
       try {
-      const { error } = await supabase
-        .from("bookings")
-        .insert({ firstname, surname, email, selectedDate, selectedRoom });
+        toggle();
+        const { error } = await supabase
+          .from("bookings")
+          .insert({ firstname, surname, email, selectedDate, selectedRoom });
 
-      if (error) {
-        setError("An error occurred during conformation");
-      } else {
-        router.push("/succes");
-      }
+        if (error) {
+          setError("An error occurred during conformation");
+        }
       } catch (error) {
-      setError("An error occurred during confirmation");
+        setError("An error occurred during confirmation");
       } finally {
-      toggle();
+        toggle();
       }
-    }, 2000);    
+    }, 2000);
   }
   return (
     <>
-    <LoadingOverlay visible={visible} zIndex={1000} overlayProps={{ radius: "md", blur: 2 }}/>
+      <LoadingOverlay
+        visible={visible}
+        zIndex={1000}
+        overlayProps={{ radius: "md", blur: 2 }}
+      />
 
       <Grid className="reservation-steps">
         <GridCol span={6} offset={3}>
@@ -173,7 +175,10 @@ export default function Reservation() {
           </Link>
         </GridCol>
         <GridCol span={2} offset={7}>
-          <Link href="/booking/confirmation" onClick={handleConfirmClick && toggle}>
+          <Link
+            href="/booking/confirmation"
+            onClick={handleConfirmClick && toggle}
+          >
             <ButtonConfirm />
           </Link>
         </GridCol>
