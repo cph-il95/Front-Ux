@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/router';
 import styles from "../backgroundImage.module.css"
-import { Center, Stack } from '@mantine/core';
+import { Center } from '@mantine/core';
 import { createClient } from "@supabase/supabase-js";
 import BookingCard from '../molecules/BookingCard';
 
@@ -17,19 +18,11 @@ const ParentComponent = () => {
 
 }
 
-
-
-
-
-
 export default function SeeBookings() {
+  const router = useRouter();
   const [email, setEmail] = useState([]);
   const [selectedDate, setSelectedDate] = useState("")
   const [selectedRoom, setSelectedRoom] = useState("")
-
-
-
-
 
   const supabase = createClient(
     "https://mviilvaebgkbuyuwkrgd.supabase.co",

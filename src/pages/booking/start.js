@@ -20,6 +20,7 @@ export default function Start() {
   const router = useRouter();
 
   useEffect(() => {
+    // Få brugerens e-mail fra localStorage for at afgøre, om brugeren er logget ind
     const email = JSON.parse(localStorage.getItem("email"));
     if (!email) {
       router.push("/signup");
@@ -29,6 +30,7 @@ export default function Start() {
     }
   }, []);
 
+  // Hent brugerdata fra Supabase baseret på den loggede ind e-mail
   async function fetchUserData() {
     const loggedInEmail = JSON.parse(localStorage.getItem("email"));
     const { data, error } = await supabase

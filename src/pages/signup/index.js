@@ -21,6 +21,7 @@ export default function Signup() {
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im12aWlsdmFlYmdrYnV5dXdrcmdkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDAxMzY0MTMsImV4cCI6MjAxNTcxMjQxM30.dD4TGrVJHss_rKckmilVjQC2n2kOv2V2GFUPO0VOwyY"
   );
 
+  // Event handlers til håndtering af ændringer i inputfelterne
   const handleFirstnameChange = (event) => {
     setFirstname(event.target.value);
   };
@@ -34,6 +35,7 @@ export default function Signup() {
     setPassword(event.target.value);
   };
 
+  // Event handler til håndtering af formularindsendelse
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("signing up with", firstname, surname, email, password);
@@ -41,6 +43,7 @@ export default function Signup() {
     saveUserData();
   };
 
+  // Funktion til at registrere en ny bruger via Supabase
   async function signUpNewUser() {
     const { data, error } = await supabase.auth.signUp({
       firstname: firstname,
@@ -50,10 +53,13 @@ export default function Signup() {
     });
   }
 
+  // Funktion til at gemme brugerdata i databasen
   async function saveUserData() {
     const { data, error } = await supabase
       .from("users")
       .insert([{ firstname, surname, email }]);
+      
+      // Hvis der ikke er fejl, naviger til login-siden
     if (!error) {
       router.push("/login");
     }

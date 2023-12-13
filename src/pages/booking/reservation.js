@@ -1,12 +1,14 @@
 import ButtonBack from "@/components/atoms/ButtonBack";
 import ButtonConfirm from "@/components/atoms/ButtonConfirm";
-import { Stepper, Grid, GridCol } from "@mantine/core";
+import { Stepper, Grid, GridCol, LoadingOverlay } from "@mantine/core";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { createClient } from "@supabase/supabase-js";
+import { useDisclosure } from '@mantine/hooks';
 
 export default function Reservation() {
+  // State hooks til at gemme brugerdata og reservationsspecifik information
   const [email, setEmail] = useState([]);
   const [firstname, setFirstname] = useState("");
   const [surname, setSurname] = useState("");
@@ -14,6 +16,7 @@ export default function Reservation() {
   const [selectedRoom, setSelectedRoom] = useState([]);
   const [error, setError] = useState("Please confirm your reservation");
   const [active] = useState(2);
+  const [visible, { toggle }] = useDisclosure(false);
 
   const router = useRouter();
 
@@ -24,6 +27,7 @@ export default function Reservation() {
 
   // Sikre siden mod adgang hvis man ikke er logget ind
   useEffect(() => {
+    // Effekt hook til at sikre siden mod uautoriseret adgang og hente brugerdata og tjekke reservation
     const email = JSON.parse(localStorage.getItem("email"));
     if (!email) {
       router.push("/signup");
@@ -49,6 +53,7 @@ export default function Reservation() {
     }
   }, []);
 
+    // Funktion til at hente brugerdata fra Supabase
   async function fetchUserData() {
     const loggedInEmail = JSON.parse(localStorage.getItem("email"));
     const { data, error } = await supabase
@@ -66,6 +71,7 @@ export default function Reservation() {
     }
   }
 
+  // Funktion til at tjekke om valgt dato og rum allerede er booket
   async function checkBooking() {
     const date = JSON.parse(localStorage.getItem("selectedDate"));
     const room = JSON.parse(localStorage.getItem("selectedRoom"));
@@ -86,13 +92,31 @@ export default function Reservation() {
     }
   }
 
+  // Funktion til at håndtere bekræftelsesklik og indsætte reservation i databasen
   async function handleConfirmClick() {
-    const { error } = await supabase
-      .from("bookings")
-      .insert({ firstname, surname, email, selectedDate, selectedRoom });
+    toggle();
+    setTimeout(async () => {
+      try {
+      const { error } = await supabase
+        .from("bookings")
+        .insert({ firstname, surname, email, selectedDate, selectedRoom });
+
+      if (error) {
+        setError("An error occurred during conformation");
+      } else {
+        router.push("/succes");
+      }
+      } catch (error) {
+      setError("An error occurred during confirmation");
+      } finally {
+      toggle();
+      }
+    }, 2000);    
   }
   return (
     <>
+    <LoadingOverlay visible={visible} zIndex={1000} overlayProps={{ radius: "md", blur: 2 }}/>
+
       <Grid className="reservation-steps">
         <GridCol span={6} offset={3}>
           <Stepper size="xs" active={active} allowNextStepsSelect={false}>
@@ -149,7 +173,7 @@ export default function Reservation() {
           </Link>
         </GridCol>
         <GridCol span={2} offset={7}>
-          <Link href="/booking/confirmation" onClick={handleConfirmClick}>
+          <Link href="/booking/confirmation" onClick={handleConfirmClick && toggle}>
             <ButtonConfirm />
           </Link>
         </GridCol>

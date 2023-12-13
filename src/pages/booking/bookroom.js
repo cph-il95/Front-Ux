@@ -55,7 +55,7 @@ const BookRoom = () => {
     }
   }, []);
 
-  // async function chechAvailability() {
+  // async function checkAvailability() {
   //   const date = JSON.parse(localStorage.getItem("selectedDate"));
   //   const room = JSON.parse(localStorage.getItem("selectedRoom"));
   //   const { data, error } = await supabase

@@ -6,6 +6,7 @@ import { createClient } from "@supabase/supabase-js";
 import ButtonViewBooking from "@/components/atoms/ButtonViewBooking";
 
 export default function confirmation() {
+  // Oprettelse af router og state hooks til brugerinformation og reservation
   const router = useRouter();
 
   const [email, setEmail] = useState([]);
@@ -45,6 +46,7 @@ export default function confirmation() {
     }
   }, []);
 
+  // Funktion til at hente brugerdata fra Supabase
   async function fetchUserData() {
     const loggedInEmail = JSON.parse(localStorage.getItem("email"));
     const { data, error } = await supabase
@@ -62,6 +64,7 @@ export default function confirmation() {
     }
   }
 
+  // State hook til at angive det aktive trin i stepperen
   const [active] = useState(3);
   return (
     <>
