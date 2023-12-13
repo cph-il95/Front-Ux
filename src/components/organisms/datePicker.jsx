@@ -71,6 +71,7 @@ const DateRangePicker = () => {
         <DatePicker
           value={selectedDate}
           onChange={setSelectedDate}
+          minDate={new Date()}
         />
       </Grid.Col>
       <Stack h={150}>
