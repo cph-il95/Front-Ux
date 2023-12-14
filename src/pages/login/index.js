@@ -1,10 +1,17 @@
-import { Button, Grid, PasswordInput, Stack, TextInput, LoadingOverlay } from "@mantine/core";
+import {
+  Button,
+  Grid,
+  PasswordInput,
+  Stack,
+  TextInput,
+  LoadingOverlay,
+} from "@mantine/core";
 import { createClient } from "@supabase/supabase-js";
 import Link from "next/link";
 import React, { useState } from "react";
 import styles from "../../components/backgroundImage.module.css";
 import { useRouter } from "next/router";
-import { useDisclosure } from '@mantine/hooks';
+import { useDisclosure } from "@mantine/hooks";
 
 export default function index() {
   // State hooks til at håndtere input og fejlmeddelelser
@@ -36,27 +43,20 @@ export default function index() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-
-  // Sætter et delay på 1000 milisekunder før login-processen startes
-  setTimeout(async () => {
-    try {
-      toggle();
-      await loginUser();
-      await fetchUserData();
-      setError("");
-    } catch (error) {
-      console.error("Error during login:", error);
-      setError("An error occurred during login");
-    } finally {
-      toggle();
-    }
-  }, 1000);
-
-    
-    // loginUser();
-    // fetchUserData();
-    // console.log("user is logged in with email:", email);
-    
+    // Sætter et delay på 1000 milisekunder før login-processen startes
+    setTimeout(async () => {
+      try {
+        toggle();
+        await loginUser();
+        await fetchUserData();
+        setError("");
+      } catch (error) {
+        console.error("Error during login:", error);
+        setError("An error occurred during login");
+      } finally {
+        toggle();
+      }
+    }, 1000);
   };
 
   // Funktion til at logge brugeren ind med Supabase
@@ -92,11 +92,14 @@ export default function index() {
     }
   }
 
-
   return (
     <div className={styles.background}>
-      <Stack style={{width:"600px", margin:"-200px 0 0 -800px"}} >
-      <LoadingOverlay visible={visible} zIndex={1000} overlayProps={{ radius: "md", blur: 2 }} />
+      <Stack style={{ width: "600px", margin: "-200px 0 0 -800px" }}>
+        <LoadingOverlay
+          visible={visible}
+          zIndex={1000}
+          overlayProps={{ radius: "md", blur: 2 }}
+        />
         <Grid>
           <Grid.Col span={4}></Grid.Col>
           <div>
@@ -104,13 +107,13 @@ export default function index() {
               <div></div>
             </Stack>
             <Stack h={80}>
-              <div style={{color:"white"}}>
+              <div style={{ color: "white" }}>
                 <h3>Welcome</h3>
                 <h3>Please log in</h3>
               </div>
             </Stack>
 
-            <form onSubmit={handleSubmit} style={{width:"400px"}}>
+            <form onSubmit={handleSubmit} style={{ width: "400px" }}>
               <Stack h={400} justify="space-between">
                 <TextInput
                   size="md"
@@ -122,7 +125,7 @@ export default function index() {
                   onChange={handleEmailChange}
                   required
                   styles={{
-                    label:{color:"white"},
+                    label: { color: "white" },
                   }}
                 />
                 {error && <div style={{ color: "red" }}>{error}</div>}
@@ -136,7 +139,7 @@ export default function index() {
                   onChange={handlePasswordChange}
                   required
                   styles={{
-                    label:{color:"white"},
+                    label: { color: "white" },
                   }}
                 />
                 {error && <div style={{ color: "red" }}>{error}</div>}
@@ -150,12 +153,16 @@ export default function index() {
                 >
                   LOG IN
                 </Button>
-                <Link 
-                style={{
-                  color:"white",
-                  marginBottom:"10px",
-                  textDecorationLine:"none"}} 
-                  href="/signup">Don't have a user? Sign up here</Link>
+                <Link
+                  style={{
+                    color: "white",
+                    marginBottom: "10px",
+                    textDecorationLine: "none",
+                  }}
+                  href="/signup"
+                >
+                  Don't have a user? Sign up here
+                </Link>
               </Stack>
             </form>
           </div>
